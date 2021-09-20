@@ -17,10 +17,62 @@
           <h1 class="title">Auto World</h1>
           <div class="cars">Vehicles</div>
         </div>      
-          <div class="admin">Admin</div>
     </header>
     <main>
-      <section></section>
+      <section class="theForm">
+        <h3 class="select-title">SELECT THE VEHICLE</h3>
+        <form method="GET" action="/cars">
+          <select name="list-of-cars" id="list-of-cars">
+            <option value="audi">Audi</option>
+            <option value="bmw">BMW</option>
+            <option value="porsche">Porsche</option>
+            <option value="mercedes">Mercedes-Benz</option>
+            <option value="volkswagen">Volkswagen</option>
+          </select>
+          <select name="price-range" id="price-range">
+            <option value="fivethousand">0$-5000$</option>
+            <option value="tenthousand">5000$-10000$</option>
+            <option value="twentythousand">10000$-20000$</option>
+            <option value="fiftythousand">20000$-50000$</option>
+            <option value="infinity">50000$+</option>
+          </select>
+          <input id="submit" type="submit" value="SEARCH" class="search"/>
+        </form>
+      </section>
+
+      <h1 class="vehicles-on-sale">VEHICLES ON SALE</h1>
+      <section class="shopping">
+        <div class="shopping_subcontainer">
+          <h4 class="shopping_heading">Audi S7</h4>
+          <img src="../images/audiseven.png" class="shopping_image" alt="vehicle" class="vehicleimg"/>
+        </div>
+          <div class="information">
+            <p>Year: 2019</p>
+            <p>Price: 75,000$</p>
+            <p>Status: ON SALE!</p>
+            <p>Color: White</p>
+            <p>Mileage: 14,000 km</p>
+            <p>Transmission: automatic</p>
+            <p>Fuel Type: Regular</p>
+            <button class="send-a-message">SEND A MESSAGE</button>
+          </div>             
+      </section>
+      <section class="shopping">
+        <div class="shopping_subcontainer">
+          <h4 class="shopping_heading">Audi S7</h4>
+          <img src="../images/audiseven.png" class="shopping_image" alt="vehicle" class="vehicleimg"/>
+        </div>
+          <div class="information">
+            <p>Year: 2019</p>
+            <p>Price: 75,000$</p>
+            <p>Status: ON SALE!</p>
+            <p>Color: White</p>
+            <p>Mileage: 14,000 km</p>
+            <p>Transmission: automatic</p>
+            <p>Fuel Type: Regular</p>
+            <button class="send-a-message">SEND A MESSAGE</button>
+          </div>             
+      </section>
     </main>
   </body>
 </html>
