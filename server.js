@@ -38,7 +38,7 @@ const login =require('./routes/login');
 const widgetsRoutes = require("./routes/widgets");
 const adminRoutes = require("./routes/admin");
 const tradesRoutes = require("./routes/trades");
-const tradesRoutes = require("./routes/cars_queries");
+const carsRoute = require("./routes/cars_queries");
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
