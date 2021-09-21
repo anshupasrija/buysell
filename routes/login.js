@@ -1,10 +1,12 @@
+const express = require('express');
+const router  = express.Router();
 
-app.get('/login/:id', (req, res) => {
 
-  req.session.user_id = req.params.id;
-  res.cookie('user_id', req.params.id);
-  res.redirect('/');
-
-});
-
+module.exports = () => {
+  router.get("/:id", (req, res) => {
+    res.cookie('user_id', req.params.id);
+    res.redirect('/');
+  });
+  return router;
+};
 
