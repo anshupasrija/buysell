@@ -15,8 +15,8 @@ CREATE TABLE cars (
   transmission VARCHAR(20),
   fuel VARCHAR(20),
   mileage INTEGER,
-  thumbnail_photo_url VARCHAR(255),
-  image VARCHAR(255),
+  -- thumbnail_photo_url VARCHAR(255),
+  image_url VARCHAR(255),
   active BOOLEAN NOT NULL DEFAULT TRUE
 );
 
@@ -25,4 +25,4 @@ comment on column cars.transmission is 'Considering NOT NULL option';
 comment on column cars.fuel is 'Considering NOT NULL option';
 comment on column cars.mileage is 'Considering NOT NULL option';
 
-comment on column cars.image is 'Considering URL type or image_id of image table';
+comment on column cars.image_url is 'Considering URL type or image_id of image table';
