@@ -36,16 +36,21 @@ app.use(express.static("public"));
 const usersRoutes = require("./routes/users");
 const login =require('./routes/login');
 const widgetsRoutes = require("./routes/widgets");
+const adminRoutes = require("./routes/admin");
+const tradesRoutes = require("./routes/trades");
 const carsRoute = require("./routes/cars_queries");
+const messagesRoute = require("./routes/messages");
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 app.use("/api/users", usersRoutes(db));
 app.use("/login",login());
 app.use("/api/widgets", widgetsRoutes(db));
-app.use("/cars",carsRoute(db) );
+app.use("/api/trades", tradesRoutes(db));
+app.use("/admin", adminRoutes(db));
+app.use("/cars", carsRoute(db) );
+app.use("/messages", messagesRoute(db));
 // Note: mount other resources here, using the same pattern above
-
 
 // Home page
 // Warning: avoid creating more routes in this file!

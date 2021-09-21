@@ -1,0 +1,10 @@
+DROP TABLE IF EXISTS trades CASCADE;
+
+CREATE TABLE message (
+  id SERIAL PRIMARY KEY NOT NULL,
+  messageNum INTEGER NOT NULL,
+  trades_id INTEGER NOT NULL,
+  users_id INTEGER NOT NULL,
+  FOREIGN KEY (trades_id) REFERENCES trades(id),
+  FOREIGN KEY (users_id) REFERENCES users(id)
+)
