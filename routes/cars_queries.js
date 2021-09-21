@@ -6,7 +6,7 @@ module.exports = (db) => {
     db.query(`SELECT * FROM cars`)
 
       .then(data => {
-        console.log('this is data', data);
+        // console.log('this is data', data);
         const cars = data.rows;
         res.json(cars);
       })
@@ -17,4 +17,6 @@ module.exports = (db) => {
       });
   });
   return router;
+
+
 };
