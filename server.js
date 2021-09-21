@@ -39,6 +39,7 @@ const widgetsRoutes = require("./routes/widgets");
 const adminRoutes = require("./routes/admin");
 const tradesRoutes = require("./routes/trades");
 const carsRoute = require("./routes/cars_queries");
+const searchRoute = require("./routes/search");
 const messagesRoute = require("./routes/messages");
 
 // Mount all resource routes
@@ -48,7 +49,8 @@ app.use("/login",login());
 app.use("/api/widgets", widgetsRoutes(db));
 app.use("/api/trades", tradesRoutes(db));
 app.use("/admin", adminRoutes(db));
-app.use("/cars", carsRoute(db) );
+app.use("/cars",carsRoute(db) );
+app.use("/search", searchRoute(db));
 app.use("/messages", messagesRoute(db));
 // Note: mount other resources here, using the same pattern above
 

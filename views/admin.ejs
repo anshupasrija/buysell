@@ -3,5 +3,39 @@
   <head></head>
   <body>
     <h1>HELLO WORLD</h1>
+    <form method="POST" action="/admin">
+      Brand:<select name="list-of-cars" id="list-of-cars">
+        <option value="audi">Audi</option>
+        <option value="bmw">BMW</option>
+        <option value="porsche">Porsche</option>
+        <option value="mercedes">Mercedes-Benz</option>
+        <option value="volkswagen">Volkswagen</option>
+      </select>
+      <br>
+      Model:<input textholder="model" class="model"/>
+      <br>
+      Upload Image:<input type="file" id="img" name="img"/>
+      <br>
+      Year:<input textholder="year" class="year"/>
+      <br>
+      Price:<input textholder="price" class="price"/>
+      <br>
+      Status:<select name="status" id="status">
+        <option value="sold">SOLD OUT!</option>
+        <option value="sale">ON SALE!!</option>
+      </select>
+      <br>
+      Color:<input textholder="color" class="color"/>
+      <br>
+      Mileage:<input textholder="mileage" class="mileage"/>
+      <br>
+      Transmission:<input textholder="transmission" class="transmission"/>
+      <br>
+      Fuel Type:<input textholder="fuel-type" class="fuel-type"/>
+      <br>
+      <a href="/admin">
+        <button class="send-a-message">SEND A MESSAGE</button>
+      </a>
+    </form>
   </body>
 </html>
