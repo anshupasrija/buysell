@@ -59,7 +59,7 @@ $(() => {
         <p>Transmission: ${trade.transission}</p>
         <p>Fuel Type: ${trade.fuel}</p>
         <input id='trade-id' name='trade-id' type="text" value=${trade.id} hidden/>
-        <a href="/messages?id=${trades.id}">
+        <a href="/messages?id=${trade.id}">
         <button class="send-a-message">SEND A MESSAGE</button>
         </a>
       </div>

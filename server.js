@@ -55,7 +55,7 @@ app.use("/messages", messagesRoute(db));
 
 
 app.get("/sample", (req, res) => {
-  res.render("index_sample", val);
+  res.render("index_sample");
 });
 // Note: mount other resources here, using the same pattern above
 
