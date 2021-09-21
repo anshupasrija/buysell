@@ -22,9 +22,7 @@ module.exports = (db) => {
     //       .status(500)
     //       .json({ error: err.message });
     //   });
-
-    res.status(201);
-
+    res.render('admin.ejs');
     console.log("reached admin route.");
   });
   return router;

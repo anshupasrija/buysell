@@ -39,6 +39,8 @@ const widgetsRoutes = require("./routes/widgets");
 const adminRoutes = require("./routes/admin");
 const tradesRoutes = require("./routes/trades");
 const carsRoute = require("./routes/cars_queries");
+const searchRoute = require("./routes/search");
+const messagesRoute = require("./routes/messages");
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -48,14 +50,21 @@ app.use("/api/widgets", widgetsRoutes(db));
 app.use("/api/trades", tradesRoutes(db));
 app.use("/admin", adminRoutes(db));
 app.use("/cars",carsRoute(db) );
-// Note: mount other resources here, using the same pattern above
+app.use("/search", searchRoute(db));
+app.use("/messages", messagesRoute(db));
 
+
+app.get("/sample", (req, res) => {
+  res.render("index_sample", val);
+});
+// Note: mount other resources here, using the same pattern above
 
 // Home page
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
 app.get("/", (req, res) => {
-  res.render("index");
+  const val = [{brand:'ERIK'}];
+  res.render("index", val);
 });
 
 app.listen(PORT, () => {
