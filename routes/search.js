@@ -8,9 +8,11 @@ module.exports = (db) => {
     const params = [`%${req.query.brand}%`,req.query.price];
     db.query(sql, params)
     .then(data => {
-      console.log('this is data',data);
-      res.json(data.rows);
+       res.json(data.rows);
     })
   });
+
+  router.post
+
   return router;
 };

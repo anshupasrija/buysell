@@ -1,0 +1,6 @@
+DROP TABLE IF EXISTS favourites CASCADE;
+CREATE TABLE favourites (
+  id SERIAL PRIMARY KEY NOT NULL,
+  user_id INTEGER REFERENCES users(id) NOT NULL,
+  trade_id INTEGER REFERENCES trades(id) NOT NULL
+)
