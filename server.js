@@ -41,7 +41,8 @@ const tradesRoutes = require("./routes/trades");
 const carsRoute = require("./routes/cars_queries");
 const searchRoute = require("./routes/search");
 const favouriteRoute = require("./routes/favourites");
-app.disable('etag');
+app.disable('etag');// removing the url from the cache memory
+const messagesRoute = require("./routes/messages");
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 app.use("/api/users", usersRoutes(db));
@@ -52,14 +53,21 @@ app.use("/admin", adminRoutes(db));
 app.use("/cars",carsRoute(db) );
 app.use("/search", searchRoute(db));
 app.use("/favourites", favouriteRoute(db));
+app.use("/messages", messagesRoute(db));
 // Note: mount other resources here, using the same pattern above
 
 
 // Home page
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
+
+app.get("/sample", (req, res) => {
+  res.render("index_sample");
+});
+
 app.get("/", (req, res) => {
-  res.render("index");
+  const val = [{brand:'ERIK'}];
+  res.render("index", val);
 });
 
 

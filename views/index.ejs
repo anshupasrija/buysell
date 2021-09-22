@@ -9,7 +9,6 @@
 
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
     <script type="text/javascript" src="/scripts/app.js"></script>
-    <script src="/scripts/tradesScript.js"></script>
   </head>
 
   <body>
@@ -22,30 +21,67 @@
     <main>
       <section class="theForm">
         <h3 class="select-title">SELECT THE VEHICLE</h3>
-        <form method="GET" action="/search">
-          <select name="brand" id="brand">
-            <option value="Audi">Audi</option>
-            <option value="BMW">BMW</option>
+        <form method="GET" action="/cars">
+          <select name="list-of-cars" id="list-of-cars">
+            <option value="audi">Audi</option>
+            <option value="bmw">BMW</option>
             <option value="porsche">Porsche</option>
             <option value="mercedes">Mercedes-Benz</option>
             <option value="volkswagen">Volkswagen</option>
           </select>
-          <select name="price" id="price">
-            <option value="40000">40000</option>
-            <option value="30000">30000</option>
-            <option value="10000">10000</option>
-            <option value="20000">20000</option>
-            <option value="50000">50000</option>
+          <select name="price-range" id="price-range">
+            <option value="fivethousand">0$-5000$</option>
+            <option value="tenthousand">5000$-10000$</option>
+            <option value="twentythousand">10000$-20000$</option>
+            <option value="fiftythousand">20000$-50000$</option>
+            <option value="infinity">50000$+</option>
           </select>
-          <input id="submit" type="submit" value="search" class="search"/>
+          <input id="submit" type="submit" value="SEARCH" class="search"/>
         </form>
       </section>
-      <div id = "cars-container"></div>
 
-
-
-
+      <h1 class="vehicles-on-sale">VEHICLES ON SALE</h1>
+      <div class="container" id="trade-container">
+        <section class="shopping">
+          <div class="shopping_subcontainer">
+            <h4 class="shopping_heading">Audi S7</h4>
+            <img src="../images/audiseven.png" class="shopping_image" alt="vehicle" class="vehicleimg"/>
+          </div>
+            <div class="information">
+              <p>Year: 2019</p>
+              <p>Price: 75,000$</p>
+              <p>Status: ON SALE!</p>
+              <p>Color: White</p>
+              <p>Mileage: 14,000 km</p>
+              <p>Transmission: automatic</p>
+              <p>Fuel Type: Regular</p>
+              <a href="/messages">
+                <button class="send-a-message">SEND A MESSAGE</button>
+              </a>
+            </div>
+        </section>
+        <section class="shopping">
+          <div class="shopping_subcontainer">
+            <h4 class="shopping_heading">BMW 318i</h4>
+            <img src="../images/bmw.webp" class="shopping_image" alt="vehicle" class="vehicleimg"/>
+          </div>
+            <div class="information">
+              <p>Year: 2019</p>
+              <p>Price: 75,000$</p>
+              <p>Status: ON SALE!</p>
+              <p>Color: White</p>
+              <p>Mileage: 14,000 km</p>
+              <p>Transmission: automatic</p>
+              <p>Fuel Type: Regular</p>
+              <a href="/messages">
+                <button class="send-a-message">SEND A MESSAGE</button>
+              </a>
+            </div>
+        </section>
+      </div>
     </main>
-
+    <footer>
+      <p>Authors - Erik, Sanghwan, & Anshu</p>
+    </footer>
   </body>
 </html>
