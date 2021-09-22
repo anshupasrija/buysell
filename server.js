@@ -38,7 +38,6 @@ const login =require('./routes/login');
 const widgetsRoutes = require("./routes/widgets");
 const adminRoutes = require("./routes/admin");
 const tradesRoutes = require("./routes/trades");
-// const carsRoute = require("./routes/cars_queries");
 const searchRoute = require("./routes/search");
 const favouriteRoute = require("./routes/favourites");
 app.disable('etag');// removing the url from the cache memory
@@ -50,7 +49,6 @@ app.use("/login",login());
 app.use("/api/widgets", widgetsRoutes(db));
 app.use("/api/trades", tradesRoutes(db));
 app.use("/admin", adminRoutes(db));
-// app.use("/cars",carsRoute(db) );
 app.use("/search", searchRoute(db));
 app.use("/favourites", favouriteRoute(db));
 app.use("/messages", messagesRoute(db));
@@ -62,14 +60,11 @@ app.use("/messages", messagesRoute(db));
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
 
-app.get("/sample", (req, res) => {
-  res.render("index_sample");
+app.get("/", (req, res) => {
+  res.render("index");
 });
 
-app.get("/", (req, res) => {
-  const val = [{brand:'ERIK'}];
-  res.render("index", val);
-});
+
 
 
 app.listen(PORT, () => {

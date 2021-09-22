@@ -22,7 +22,6 @@ CREATE TABLE trades (
   mileage INTEGER,
   thumbnail_photo_url VARCHAR(255),
   image VARCHAR(255),
-
   price INTEGER,
   description TEXT,
   start_at TIMESTAMP NOT NULL  DEFAULT now(), --start_at may not now().

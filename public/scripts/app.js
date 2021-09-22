@@ -6,52 +6,67 @@ $(() => {
     // load the data
     $.get('/api/trades')
       .then((response) => {
-        console.log(response);
         renderTrades(response);
       });
 
+    // $.ajax({
+    //   method: "GET",
+    //   url: "/api/trades"
+    // }).done((response) => {
+    //   // for(user of users) {
+    //   //   $("<div>").text(user.name).appendTo($("body"));
+    //   // }
+    //   console.log(response);
+    // });
   };
 
   const renderTrades = (trades) => {
+    console.log("trades->",typeof trades);
     const $tradesContainer = $('#trade-container');
     $tradesContainer.empty();
 
     for (const trade of trades) {
       const $trade = createTradeElement(trade);
+      console.log(trade);
       $tradesContainer.append($trade);
     }
   };
 
-
   const createTradeElement = (trade) => {
 
     const soldStr = (trade.sold === false) ? '' : '<h3>Sold</h3>'
-    const messageStr = (trade.sold === false) ? '<button class="send-a-message">SEND A MESSAGE</button>' : ''
+    const soldCss = (trade.sold === false) ? '' : 'item_sold_parent'
+    const messageStr = (trade.sold === false) ? '<button type="button" class="btn btn-sm btn-outline-secondary">Message</button>' : ''
 
     const $tradeElement = $(`
-    <section class="shopping">
-    ${soldStr}
-    <div class="shopping_subcontainer">
-      <h4 class="shopping_heading">${trade.brand} ${trade.model}</h4>
-      <img src="../images/audiseven.png" class="shopping_image" alt="vehicle" class="vehicleimg"/>
-    </div>
-      <div class="information">
-        <p>Year: ${trade.year}</p>
-        <p>Price: $${trade.price}</p>
-        <p>Color: ${trade.color}</p>
-        <p>Mileage: ${trade.mileage}km</p>
-        <p>Transmission: ${trade.transission}</p>
-        <p>Fuel Type: ${trade.fuel}</p>
-        <input id='trade-id' name='trade-id' type="text" value=${trade.id} hidden/>
-        <a href="/messages?trade_id=${trade.id}">
-        ${messageStr}
-        </a>
+      <div class="col-md-4">
+        <div id="item_sold_parent" class="card mb-4 box-shadow ${soldCss}" >
+        ${soldStr}
+          <img class="card-img-top" data-src="" alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;" src="../images/audiseven.png" data-holder-rendered="true">
+          <div class="card-body">
+            <p class="card-text">Brand: ${trade.brand}</p>
+            <p class="card-text">Model: ${trade.model}</p>
+            <p class="card-text">Year: ${trade.year}</p>
+            <p class="card-text">Price: $${trade.price}</p>
+            <p class="card-text">Color: ${trade.color}</p>
+            <p class="card-text">Mileage: ${trade.mileage}km</p>
+            <p class="card-text">Transmission: ${trade.transmission}</p>
+            <p class="card-text">Fuel Type: ${trade.fuel}</p>
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="btn-group">
+                <!-- <button type="button" class="btn btn-sm btn-outline-secondary">View</button> -->
+                <input id='trade-id' name='trade-id' type="text" value=${trade.id} hidden/>
+                ${messageStr}
+              </div>
+              <small class="text-muted">2 days ago</small>
+            </div>
+          </div>
+        </div>
       </div>
-    </section>
     `);
-
     return $tradeElement;
   };
+
 
   // grab the form
   const $form = $('#search-trade-form');
@@ -59,14 +74,19 @@ $(() => {
     event.preventDefault();
     const data = $form.serialize();
     console.log(data);
-
-    $.get('/search', data)
-      .then((response) => {
-        console.log("after searching---->",response);
-        renderTrades(response);
-      });
+    $.ajax({
+      method: "GET",
+      url: `/search?${data}`,
+    })
+    .then(function(data) {
+      renderTrades(data);
+      $(".error").hide(250);
+      $form.trigger("reset"); // reset the form like refreshing
+    })
+    .catch(function(error) {
+      console.log(error);
+    });
   });
-
 
   loadTrades();
 });
