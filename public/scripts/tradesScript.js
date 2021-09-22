@@ -1,36 +1,64 @@
 
 $(document).ready(()=>{
+
+  const loadCars= ()=>{
   $.get('/api/trades')
   .then((response)=>{
     console.log(response);
+    renderCars(response);
+  });
+};
 
-  })
   const createTradeCars = (car) =>{
-    const $tradeCars = $(`<h1 class="vehicles-on-sale">VEHICLES ON SALE</h1>
+    const $tradeCars = $(`
     <section class="shopping">
       <div class="shopping_subcontainer">
         <h4 class="shopping_heading">${car.brand}</h4>
-        <img src="../images/audiseven.png" class="shopping_image" alt="vehicle" class="vehicleimg"/>
+        <img src=${car.image} class="vehicleimg"/>
       </div>
         <div class="information">
-          <p>Year: 2019</p>
-          <p>Price: 75,000$</p>
-          <p>Status: ON SALE!</p>
-          <p>Color: White</p>
-          <p>Mileage: 14,000 km</p>
-          <p>Transmission: automatic</p>
-          <p>Fuel Type: Regular</p>
+          <p>Year:${car.model}</p>
+          <p>Price:${car.price}</p>
+          <p>model: ${car.model}</p>
+          <p>Color: ${car.color}</p>
+          <p>Mileage:${car.milege}</p>
+          <p>Transmission:${car.transmission}</p>
+          <p>Fuel Type:${car.fuel}</p>
           <button class="send-a-message">SEND A MESSAGE</button>
         </div>
     </section>`);
     return $tradeCars;
   };
 
-  const renderCars = (products)=>{
+  const renderCars = (cars)=>{
     const $carscontainer = $('#cars-container');
     $carscontainer.empty();
+    for(const car of cars){
+      const $car = createTradeCars(car);
+      $carscontainer.append($car);
+    }
 
   };
+  loadCars();
+
+  const $form = $('#newform');
+  $form.on('submit',(event)=>{
+    event.preventDefault();
+      $.ajax({
+      method: "GET",
+      url: "/search",
+      dataType: "json",
+      success: (data) => {
+        console.log("data", data);
+        renderCars(data);
+      },
+      error: (err) => {
+        console.log(`errro: ${err}`);
+      },
+    });
+
+
+  })
 
 })
 console.log("loaded");

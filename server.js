@@ -38,7 +38,6 @@ const login =require('./routes/login');
 const widgetsRoutes = require("./routes/widgets");
 const adminRoutes = require("./routes/admin");
 const tradesRoutes = require("./routes/trades");
-const carsRoute = require("./routes/cars_queries");
 const searchRoute = require("./routes/search");
 const favouriteRoute = require("./routes/favourites");
 app.disable('etag');
@@ -49,7 +48,6 @@ app.use("/login",login());
 app.use("/api/widgets", widgetsRoutes(db));
 app.use("/api/trades", tradesRoutes(db));
 app.use("/admin", adminRoutes(db));
-app.use("/cars",carsRoute(db) );
 app.use("/search", searchRoute(db));
 app.use("/favourites", favouriteRoute(db));
 // Note: mount other resources here, using the same pattern above
