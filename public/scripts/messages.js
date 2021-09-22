@@ -1,10 +1,10 @@
 $(() => {
 
-  console.log('loaded');
+  console.log('message.js loaded');
 
-  const loadTrades = () => {
+  const loadMessages = () => {
     // load the data
-    $.get('/api/trades')
+    $.get('/api/messages')
       .then((response) => {
         console.log(response);
         renderTrades(response);
@@ -43,7 +43,7 @@ $(() => {
         <p>Transmission: ${trade.transission}</p>
         <p>Fuel Type: ${trade.fuel}</p>
         <input id='trade-id' name='trade-id' type="text" value=${trade.id} hidden/>
-        <a href="/messages?trade_id=${trade.id}">
+        <a href="/messages?id=${trade.id}">
         ${messageStr}
         </a>
       </div>

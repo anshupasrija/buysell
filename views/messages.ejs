@@ -16,7 +16,7 @@
       <div class="headerleft">
           <h1 class="title">Auto World</h1>
           <div class="cars">Messages</div>
-        </div>      
+        </div>
     </header>
     <main>
       <h2 class="titlemessages">ALL OF YOUR MESSAGES WILL APPEAR HERE</h2>
@@ -27,8 +27,14 @@
         <div class="firstadmin">
           <p>ADMIN: Hello! This vehicle is still available and you can purchase it at our dealership!</p>
         </div>
+
+
+        <form>
+          <input type="hidden" name="trade_id" value="<%=trade_id%>">
+          <input type="hidden" name="user_id" value="<%=user_id%>">
           <textarea class="messagetext" name="messagetext" rows="4" cols="50"></textarea>
-          <button class="sendatext">SEND IT!</button>
+          <button type="submit" class="sendatext">SEND IT!</button>
+        </form>
       </section>
     </main>
     <footer>

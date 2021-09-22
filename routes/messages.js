@@ -22,8 +22,14 @@ module.exports = (db) => {
   //         .status(500)
   //         .json({ error: err.message });
   //     });
-    console.log("----->Messages@@@");
-    res.render('messages.ejs');
+
+    //  console.log("req-------------->>>>>>>>>>>>>>>>>>>", req.query);
+
+
+    // req.session.user_id = id;
+//    const templateVars = { trade_id: req.query.trade_id, user_id: req.query.user_id };
+    const templateVars = { trade_id: req.query.trade_id, user_id: '2'};
+    res.render('messages.ejs', templateVars);
   });
   return router;
 };
