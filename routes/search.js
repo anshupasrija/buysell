@@ -9,6 +9,7 @@ module.exports = (db) => {
     db.query(sql, params)
     .then(data => {
        res.json(data.rows);
+      // res.send('brand: ' + `%${req.query.brand}%` + 'price:' + req.query.price);
     })
   });
 

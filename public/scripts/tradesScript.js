@@ -44,19 +44,20 @@ $(document).ready(()=>{
   const $form = $('#newform');
   $form.on('submit',(event)=>{
     event.preventDefault();
-      $.ajax({
+    const data = $form.serialize();
+    console.log('this is data',data);
+    $.ajax({
       method: "GET",
-      url: "/search",
-      dataType: "json",
-      success: (data) => {
-        console.log("data", data);
-        renderCars(data);
-      },
-      error: (err) => {
-        console.log(`errro: ${err}`);
-      },
+      url: `/search?${data}`,
+    })
+    .then(function(data) {
+      renderCars(data);
+      $(".error").hide(250);
+      $form.trigger("reset"); // reset the form like refreshing
+    })
+    .catch(function(error) {
+      console.log(error);
     });
-
 
   })
 
