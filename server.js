@@ -50,7 +50,7 @@ app.use("/login",login());
 app.use("/api/widgets", widgetsRoutes(db));
 app.use("/api/trades", tradesRoutes(db));
 app.use("/admin", adminRoutes(db));
-app.use("/cars",carsRoute(db) );
+// app.use("/cars",carsRoute(db) );
 app.use("/search", searchRoute(db));
 app.use("/favourites", favouriteRoute(db));
 app.use("/messages", messagesRoute(db));
