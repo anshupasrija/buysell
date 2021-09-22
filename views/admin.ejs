@@ -4,37 +4,28 @@
   <body>
     <h1>HELLO WORLD</h1>
     <form method="POST" action="/admin">
-      Brand:<select name="list-of-cars" id="list-of-cars">
-        <option value="audi">Audi</option>
-        <option value="bmw">BMW</option>
-        <option value="porsche">Porsche</option>
-        <option value="mercedes">Mercedes-Benz</option>
-        <option value="volkswagen">Volkswagen</option>
-      </select>
+      Brand:<input  id="listOfCars" name="listOfCars" class="listOfCars" textholder="listOfCars"/>
       <br>
-      Model:<input textholder="model" class="model"/>
+      Model:<input textholder="model" name="name" class="model"/>
       <br>
       Upload Image:<input type="file" id="img" name="img"/>
       <br>
-      Year:<input textholder="year" class="year"/>
+      Year:<input textholder="year" name="year" class="year"/>
       <br>
-      Price:<input textholder="price" class="price"/>
+      Price:<input textholder="price" name="price" class="price"/>
       <br>
-      Status:<select name="status" id="status">
-        <option value="sold">SOLD OUT!</option>
-        <option value="sale">ON SALE!!</option>
-      </select>
+      Status:<input name="status" id="status" class="status" textholder="status"/>
       <br>
-      Color:<input textholder="color" class="color"/>
+      Color:<input textholder="color" name="color" class="color"/>
       <br>
-      Mileage:<input textholder="mileage" class="mileage"/>
+      Mileage:<input textholder="mileage" name="mileage" class="mileage"/>
       <br>
-      Transmission:<input textholder="transmission" class="transmission"/>
+      Transmission:<input textholder="transmission" name="transmission" class="transmission"/>
       <br>
-      Fuel Type:<input textholder="fuel-type" class="fuel-type"/>
+      Fuel Type:<input textholder="fuelType" name="fuelType" class="fuelType"/>
       <br>
       <a href="/admin">
-        <button class="send-a-message">SEND A MESSAGE</button>
+        <button class="post-item" name="post-item">POST</button>
       </a>
     </form>
   </body>

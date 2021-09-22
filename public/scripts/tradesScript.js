@@ -5,15 +5,17 @@ $(document).ready(()=>{
     console.log(response);
 
   })
+})
+
   const createTradeCars = (car) =>{
-    const $tradeCars = $(`<h1 class="vehicles-on-sale">VEHICLES ON SALE</h1>
+    const tradeCars = $(`<h1 class="vehicles-on-sale">VEHICLES ON SALE</h1>
     <section class="shopping">
       <div class="shopping_subcontainer">
         <h4 class="shopping_heading">${car.brand}</h4>
-        <img src="../images/audiseven.png" class="shopping_image" alt="vehicle" class="vehicleimg"/>
+        <img src="${car.img}" class="shopping_image" alt="vehicle" class="vehicleimg"/>
       </div>
         <div class="information">
-          <p>Year: 2019</p>
+          <p>Year: ${car.year}</p>
           <p>Price: 75,000$</p>
           <p>Status: ON SALE!</p>
           <p>Color: White</p>
@@ -23,14 +25,16 @@ $(document).ready(()=>{
           <button class="send-a-message">SEND A MESSAGE</button>
         </div>
     </section>`);
-    return $tradeCars;
+    return tradeCars;
   };
 
   const renderCars = (products)=>{
-    const $carscontainer = $('#cars-container');
-    $carscontainer.empty();
-
+    const carscontainer = $('#cars-container');
+    carscontainer.empty();
+    for (let i = 0; i < products.length; i++) {
+      const product = createTradeCars(products[i]);
+      $('#products').prepend(product);
+    }
   };
 
-})
 console.log("loaded");
