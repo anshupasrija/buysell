@@ -38,7 +38,7 @@ const login =require('./routes/login');
 const widgetsRoutes = require("./routes/widgets");
 const adminRoutes = require("./routes/admin");
 const tradesRoutes = require("./routes/trades");
-const carsRoute = require("./routes/cars_queries");
+// const carsRoute = require("./routes/cars_queries");
 const searchRoute = require("./routes/search");
 const favouriteRoute = require("./routes/favourites");
 app.disable('etag');// removing the url from the cache memory
