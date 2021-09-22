@@ -16,7 +16,7 @@ $(() => {
     const $tradesContainer = $('#trade-container');
     $tradesContainer.empty();
 
-    for (const trade of trades.trades) {
+    for (const trade of trades) {
       const $trade = createTradeElement(trade);
       $tradesContainer.append($trade);
     }
@@ -68,6 +68,21 @@ $(() => {
 
     return $tradeElement;
   };
+
+  // grab the form
+  const $form = $('#search-trade-form');
+  $form.on('submit', (event) => {
+    event.preventDefault();
+    const data = $form.serialize();
+    console.log(data);
+
+    $.get('/search', data)
+      .then((response) => {
+        console.log("after searching---->",response);
+        renderTrades(response);
+      });
+  });
+
 
   loadTrades();
 });
