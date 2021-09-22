@@ -8,6 +8,7 @@ module.exports = (db) => {
     const params = [`%${req.query.brand}%`,req.query.price];
     db.query(sql, params)
     .then(data => {
+      console.log(data.rows);
        res.json(data.rows);
     })
   });
