@@ -90,6 +90,37 @@ body {
   border: 5px solid black;
   width: 45%;
   margin-top: 30px;
+  position: relative;
+  overflow: hidden;
+}
+
+.item_sold_parent {
+  position: relative;
+  overflow: hidden;
+}
+
+#item_sold_parent > h3 {
+  background-color: rgba(174, 0, 0, 0.51);
+  text-align: center;
+  position: absolute;
+  top: 5rem;
+  width: 100%;
+  padding: 20px;
+  display: block;
+  color: white;
+  font-size: 3em;
+}
+
+.shopping > h3{
+  background-color: rgba(174, 0, 0, 0.51);
+  text-align: center;
+  position: absolute;
+  top: 5rem;
+  width: 100%;
+  padding: 20px;
+  display: block;
+  color: white;
+  font-size: 3em;
 }
 
 .shopping_subcontainer{
@@ -193,3 +224,13 @@ footer {
 .card-body > p{
   line-height: 0.5rem;
 }
+
+// .itemBox .Closed {
+
+//     font-size: 14px;
+//     line-height: 22px;
+//     color: white;
+//     background: Red;
+//     text-align: center;
+//     font-weight: bold;
+// }
