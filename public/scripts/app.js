@@ -1,5 +1,6 @@
 $(() => {
   console.log('loaded');
+
   const loadTrades = () => {
     // load the data
     $.get('/api/trades')
@@ -7,14 +8,26 @@ $(() => {
         renderTrades(response);
       });
   };
- const loadFavourites= ()=>{
-  const $button = $('.text-muted');
-  $button.click((event)=>{
-    event.preventDefault();
-    const data = $button.serialize();
-    console.log("i am id",data);
-    console.log("cookies.user_id",cookies.user_id);
 
+  const eventInit = () => {
+    loadFavourites();
+    popupMessage();
+  };
+
+  const popupMessage = () => {
+    $(".popup-message").click(function () {
+      $("#trade_id").val($(this).siblings('input').val());
+      $("#modal-message").modal('show');
+   });
+  }
+
+  const loadFavourites = () => {
+    const $button = $('.text-muted');
+    $button.click((event)=>{
+      event.preventDefault();
+      const data = $button.serialize();
+      console.log("i am id",data);
+      console.log("cookies.user_id",cookies.user_id);
 
       $.ajax({
         url: `/favourites/${data}`,
@@ -28,8 +41,9 @@ $(() => {
           console.log(`errro: ${err}`);
         },
       });
-  });
- }
+    });
+  };
+
   const renderTrades = (trades) => {
     console.log("trades->",typeof trades);
     const $tradesContainer = $('#trade-container');
@@ -39,12 +53,13 @@ $(() => {
       // console.log(trade);
       $tradesContainer.append($trade);
     }
-    loadFavourites();
+    eventInit();
   };
+
   const createTradeElement = (trade) => {
     const soldStr = (trade.sold === false) ? '' : '<h3>Sold</h3>'
     const soldCss = (trade.sold === false) ? '' : 'item_sold_parent'
-    const messageStr = (trade.sold === false) ? '<button type="button" class="btn btn-sm btn-outline-secondary">Message</button>' : ''
+    const messageStr = (trade.sold === false) ? '<button type="button" id="btn-message" class="btn btn-sm btn-outline-secondary popup-message" >Message</button>' : ''
     const $tradeElement = $(`
       <div class="col-md-4">
         <div id="item_sold_parent" class="card mb-4 box-shadow ${soldCss}" >
@@ -73,6 +88,7 @@ $(() => {
     `);
     return $tradeElement;
   };
+
   // grab the form
   const $form = $('#search-trade-form');
   $form.on('submit', (event) => {
@@ -92,5 +108,40 @@ $(() => {
       console.log(error);
     });
   });
+
+  const $messageForm = $('#form-message');
+  $messageForm.on('submit', (event) => {
+    event.preventDefault();
+    const data = $messageForm.serialize();
+    $.ajax({
+      method: "POST",
+      url: "/messages",
+      data: data,
+      dataType:'text',
+      success: function (data) {
+          console.log("Sucess : sending email");
+          $("#modal-message").modal('hide');
+      },
+      complete: function () {
+        $messageForm.trigger("reset");
+        $("#modal-message").modal('hide');
+      },
+      error: function (data) {
+        console.log("Fail:",data);
+        $("#modal-message").modal('hide');
+      }
+    });
+    // .then(function(data) {
+
+    //   $(".error").hide(250);
+    //   $messageForm.trigger("reset");
+    //   $("#modal-message").modal('hide');
+    // })
+    // .catch(function(error) {
+    //   console.log(error);
+    // });
+  });
+
   loadTrades();
+
 });
