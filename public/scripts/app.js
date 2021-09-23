@@ -1,43 +1,50 @@
 $(() => {
-
   console.log('loaded');
-
   const loadTrades = () => {
     // load the data
     $.get('/api/trades')
       .then((response) => {
         renderTrades(response);
       });
-
-    // $.ajax({
-    //   method: "GET",
-    //   url: "/api/trades"
-    // }).done((response) => {
-    //   // for(user of users) {
-    //   //   $("<div>").text(user.name).appendTo($("body"));
-    //   // }
-    //   console.log(response);
-    // });
   };
+ const loadFavourites= ()=>{
+  const $button = $('.text-muted');
+  $button.click((event)=>{
+    event.preventDefault();
+    const data = $button.serialize();
+    console.log("i am id",data);
+    console.log("cookies.user_id",cookies.user_id);
 
+
+      $.ajax({
+        url: `/favourites/${data}`,
+        method: "GET",
+        dataType: "json",
+        success: (data) => {
+          console.log("data", data);
+          renderTrades(data);
+        },
+        error: (err) => {
+          console.log(`errro: ${err}`);
+        },
+      });
+  });
+ }
   const renderTrades = (trades) => {
     console.log("trades->",typeof trades);
     const $tradesContainer = $('#trade-container');
     $tradesContainer.empty();
-
     for (const trade of trades) {
       const $trade = createTradeElement(trade);
-      console.log(trade);
+      // console.log(trade);
       $tradesContainer.append($trade);
     }
+    loadFavourites();
   };
-
   const createTradeElement = (trade) => {
-
     const soldStr = (trade.sold === false) ? '' : '<h3>Sold</h3>'
     const soldCss = (trade.sold === false) ? '' : 'item_sold_parent'
     const messageStr = (trade.sold === false) ? '<button type="button" class="btn btn-sm btn-outline-secondary">Message</button>' : ''
-
     const $tradeElement = $(`
       <div class="col-md-4">
         <div id="item_sold_parent" class="card mb-4 box-shadow ${soldCss}" >
@@ -58,7 +65,7 @@ $(() => {
                 <input id='trade-id' name='trade-id' type="text" value=${trade.id} hidden/>
                 ${messageStr}
               </div>
-              <small class="text-muted">2 days ago</small>
+              <button type="submit" class="text-muted"><i class="far fa-heart"></i></button>
             </div>
           </div>
         </div>
@@ -66,8 +73,6 @@ $(() => {
     `);
     return $tradeElement;
   };
-
-
   // grab the form
   const $form = $('#search-trade-form');
   $form.on('submit', (event) => {
@@ -87,6 +92,5 @@ $(() => {
       console.log(error);
     });
   });
-
   loadTrades();
 });
