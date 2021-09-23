@@ -17,5 +17,8 @@ module.exports = (db) => {
     res.send('OK');
 
   });
+  router.get("/:id", (req, res) => {
+    //res.send(req.params.id);
+  })
   return router;
 };
