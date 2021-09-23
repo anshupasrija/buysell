@@ -14,21 +14,22 @@ module.exports = (db) => {
     console.log("this is params", params);
     db.query(sqlQuery,params)
     .then(data => {
-      console.log('<<<<<<<<<<<<<<<<<>>>>>>>>>>', data.rows)
+
       return res.status(200).json(data.rows);
     })
   });
 
   router.post("/", (req, res) => {
-    console.log(req.body);
-    const trade_id = req.body.trade_id;
+    console.log("this is req body",req);
+    const trade_id = Object.keys(req.body)[0];
     const user_id = req.cookies.user_id;
     console.log("ItemID: ", trade_id)
     console.log("userID: ", user_id)
     const sql = `INSERT INTO favourites (user_id, trade_id) VALUES ($1, $2) RETURNING *;`
     db.query(sql, [user_id, trade_id])
     .then(data => {
-      res.redirect("/")
+      console.log('<<<<<<<<<<<<<<<<<>>>>>>>>>>', data.rows)
+      res.json(data.rows);
     })
     .catch(err => {
       res

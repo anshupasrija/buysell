@@ -1,117 +1,188 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+  <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
 
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+  <!-- font awesome-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+  integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+  crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+    integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  <script type="text/javascript" src="/scripts/app.js"></script>
 
-    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
-    <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+  <title>Auto World</title>
+</head>
 
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-    <!-- <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script> -->
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
-    <!-- Bootstrap CSS -->
-    <!-- font awesome-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-    integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-    <script type="text/javascript" src="/scripts/app.js"></script>
-
-    <title>Auto World</title>
-  </head>
-
-  <body>
-    <header>
-      <nav class="navbar navbar-expand-md navbar-dark bg-dark navbar-fixed-top">
-        <a class="navbar-brand" href="/">Auto World</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <div class="navbar-nav">
-            <a class="nav-item nav-link" href="/">Vehicles</a>
-          </div>
-        </div>
-          <div class="navbar-nav">
-            <a class="nav-item nav-link" id ="favourite" >Favourites</button>
-            <a class="nav-item nav-link" href="/register">Register</a>
-          </div>
-      </nav>
-    </header>
-
-    <main>
-
-      <section class="py-5 text-center container">
-        <div class="row py-lg-5" style="background-image: url('../images/audiseven.png');"> <!--inline style should move to scss-->
-          <div class="col-lg-6 col-md-8 mx-auto">
-            <h1 class="fw-light">main-header example</h1>
-            <p class="lead text-muted">Website description Website description Website description Website description Website description</p>
-            <p>
-              <h3 class="select-title">SELECT THE VEHICLE</h3>
-              <form id="search-trade-form" method="GET" action="/search" class="form-inline">
-                <div class="form-group">
-                <!-- <div class="col-sm-5"> -->
-                  <select class="form-control" name="brand" id="list-of-cars" aria-label="">
-                    <option value="AUDI">Audi</option>
-                    <option value="BMW">BMW</option>
-                    <option value="PORSCHE">Porsche</option>
-                    <option value="MERCEDES">Mercedes-Benz</option>
-                    <option value="VOLKSWAGEN">Volkswagen</option>
-                    <option value="KIA">KIA</option>
-                  </select>
-                <!-- </div> -->
-                </div>
-                <!-- <div class="col-sm-7"> -->
-                <div class="form-group">
-                  <select class="form-control" name="price" id="price-range">
-                    <option value="0">0$-5000$</option>
-                    <option value="5000">5000$-10000$</option>
-                    <option value="10000">10000$-30000$</option>
-                    <option value="30000">30000$-50000$</option>
-                    <option value="50000">50000$+</option>
-                  </select>
-                <!-- </div> -->
-                </div>
-                <input id="submit" type="submit" value="SEARCH" class="btn btn-secondary"/>
-              </div>
-              </form>
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <div class="container">
-        <div class="row" id="trade-container">
+<body>
+  <header>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark navbar-fixed-top">
+      <a class="navbar-brand" href="/">Auto World</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-item nav-link" href="/">Vehicles</a>
         </div>
       </div>
+        <div class="navbar-nav">
+          <a class="nav-item nav-link" id ="favourite" >Favourites</button>
+          <a class="nav-item nav-link" href="/register">Register</a>
+      </div>
+    </nav>
+  </header>
 
-    </main>
+  <main>
+    <section class="py-5 text-center container">
+      <div class="row py-lg-5" style="background-image: url('../images/audiseven.png');">
+        <!--inline style should move to scss-->
+        <div class="col-lg-6 col-md-8 mx-auto">
+          <h1 class="fw-light">main-header example</h1>
+          <p class="lead text-muted">Website description Website description Website description Website description
+            Website description</p>
+          <p>
+          <h3 class="select-title">SELECT THE VEHICLE</h3>
+          <form id="search-trade-form" method="GET" action="/search" class="form-inline">
+            <div class="form-group">
+              <!-- <div class="col-sm-5"> -->
+              <select class="form-control" name="brand" id="list-of-cars" aria-label="">
+                <option value="AUDI">Audi</option>
+                <option value="BMW">BMW</option>
+                <option value="PORSCHE">Porsche</option>
+                <option value="MERCEDES">Mercedes-Benz</option>
+                <option value="VOLKSWAGEN">Volkswagen</option>
+                <option value="KIA">KIA</option>
+              </select>
+              <!-- </div> -->
+            </div>
+            <!-- <div class="col-sm-7"> -->
+            <div class="form-group">
+              <select class="form-control" name="price" id="price-range">
+                <option value="0">0$-5000$</option>
+                <option value="5000">5000$-10000$</option>
+                <option value="10000">10000$-30000$</option>
+                <option value="30000">30000$-50000$</option>
+                <option value="50000">50000$+</option>
+              </select>
+              <!-- </div> -->
+            </div>
+            <input id="submit" type="submit" value="SEARCH" class="btn btn-secondary" />
+        </div>
+        </form>
+        </p>
+      </div>
+      </div>
+    </section>
 
+    <div class="container">
+      <div class="row" id="trade-container">
+      </div>
+    </div>
+  </main>
 
+<!-- The Modal -->
+  <div class="modal fade" id="modal-message">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <form id ='form-message'>
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Send Message</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <!-- Modal body -->
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">Trade</span>
+                </div>
+                <input type="text" class="form-control" name="trade_id" id="trade_id"readonly>
+              </div>
+            </div>
+         </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">Name</span>
+                </div>
+                <input type="text" class="form-control" name="user_name">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">Email</span>
+                </div>
+                <input type="email" class="form-control" name="user_email" placeholder="name@example.com">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">Phone</span>
+                </div>
+                <input type="text" class="form-control" name="user_phone"  maxlength="14" data-fv-numeric="true" data-fv-numeric-message="Please enter valid phone numbers" data-fv-phone-country11="CA" required="required" data-fv-field="data[User][mobile]">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="input-group">
+                <textarea class="form-control" rows="5" name="user_message"></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-outline-primary">Send</button>
+          <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </form>
+      </div>
+    </div>
+  </div>
 
-    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-      <p class="col-md-4 mb-0 text-muted">© Lighthouse Lab, Ahshu / Erik / Sanghwan</p>
+  <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+    <p class="col-md-4 mb-0 text-muted">© Lighthouse Lab, Ahshu / Erik / Sanghwan</p>
 
-      <a href="/" class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
-        <!-- <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg> -->
-        Auto World
-      </a>
+    <a href="/"
+      class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+      <!-- <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg> -->
+      Auto World
+    </a>
 
-      <ul class="nav col-md-4 justify-content-end">
-        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>
-        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Menu1</a></li>
-        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">menu2</a></li>
-        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
-        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>
-      </ul>
-    </footer>
+    <ul class="nav col-md-4 justify-content-end">
+      <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>
+      <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Menu1</a></li>
+      <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">menu2</a></li>
+      <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
+      <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>
+    </ul>
+  </footer>
   <!-- Bootstrap JS -->
-    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  </body>
+  <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+</body>
+
 </html>
