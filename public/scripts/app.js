@@ -1,24 +1,17 @@
 $(() => {
-
   console.log('loaded');
-
   const loadTrades = () => {
     // load the data
     $.get('/api/trades')
       .then((response) => {
         renderTrades(response);
       });
-
-
   };
 
  const loadFavourites= ()=>{
-  const $button = $('.text-muted');
+  const $button = $('#favourite');
   $button.click((event)=>{
     event.preventDefault();
-    // const data = $button.serialize();
-    // console.log("i am id",data);
-
       $.ajax({
         url: `/favourites`,
         method: "GET",
@@ -35,11 +28,17 @@ $(() => {
   });
 
  }
+ const postFavourite =()=>{
+   const $button =$('text-muted');
+   event.preventDefault();
+   $.ajax({
+     url:`/favourites`
+   })
+ }
   const renderTrades = (trades) => {
     console.log("trades->",typeof trades);
     const $tradesContainer = $('#trade-container');
     $tradesContainer.empty();
-
     for (const trade of trades) {
       const $trade = createTradeElement(trade);
       // console.log(trade);
@@ -47,13 +46,10 @@ $(() => {
     }
     loadFavourites();
   };
-
   const createTradeElement = (trade) => {
-
     const soldStr = (trade.sold === false) ? '' : '<h3>Sold</h3>'
     const soldCss = (trade.sold === false) ? '' : 'item_sold_parent'
     const messageStr = (trade.sold === false) ? '<button type="button" class="btn btn-sm btn-outline-secondary">Message</button>' : ''
-
     const $tradeElement = $(`
       <div class="col-md-4">
         <div id="item_sold_parent" class="card mb-4 box-shadow ${soldCss}" >
@@ -84,8 +80,6 @@ $(() => {
 
     return $tradeElement;
   };
-
-
   // grab the form
   const $form = $('#search-trade-form');
   $form.on('submit', (event) => {
@@ -105,7 +99,6 @@ $(() => {
       console.log(error);
     });
   });
-
   loadTrades();
 
 
