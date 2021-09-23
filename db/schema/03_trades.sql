@@ -22,12 +22,12 @@ CREATE TABLE trades (
   mileage INTEGER,
   thumbnail_photo_url VARCHAR(255),
   image VARCHAR(255),
-
   price INTEGER,
   description TEXT,
   start_at TIMESTAMP NOT NULL  DEFAULT now(), --start_at may not now().
   end_at  TIMESTAMP,
   insert_date TIMESTAMP NOT NULL  DEFAULT now(),
+  sold_date TIMESTAMP,
   -- country VARCHAR(255),
   -- street VARCHAR(255),
   -- city VARCHAR(255),
