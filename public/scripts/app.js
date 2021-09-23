@@ -12,7 +12,7 @@ $(() => {
   const $button = $('#favourite');
   $button.click((event)=>{
     event.preventDefault();
-      $.ajax({
+       $.ajax({
         url: `/favourites`,
         method: "GET",
         dataType: "json",
@@ -29,11 +29,16 @@ $(() => {
 
  }
  const postFavourite =()=>{
-   const $button =$('text-muted');
-   event.preventDefault();
-   $.ajax({
-     url:`/favourites`
+   const $button =$('.text-muted');
+   $button.click('submit', (event)=>{
+     event.preventDefault();
+
+     console.log('button clicked', data);
+
+
+
    })
+
  }
   const renderTrades = (trades) => {
     console.log("trades->",typeof trades);
@@ -45,6 +50,7 @@ $(() => {
       $tradesContainer.append($trade);
     }
     loadFavourites();
+    postFavourite();
   };
   const createTradeElement = (trade) => {
     const soldStr = (trade.sold === false) ? '' : '<h3>Sold</h3>'

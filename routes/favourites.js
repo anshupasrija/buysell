@@ -21,20 +21,20 @@ module.exports = (db) => {
 
   router.post("/", (req, res) => {
     console.log(req.body);
-    const trade_id = req.body.item_Id;
+    const trade_id = req.body.trade_id;
     const user_id = req.cookies.user_id;
     console.log("ItemID: ", trade_id)
     console.log("userID: ", user_id)
-    // const sql = `INSERT INTO favourites (user_id, trade_id) VALUES ($1, $2) RETURNING *;`
-    // db.query(sql, [user_id, trade_id])
-    // .then(data => {
-    //   res.redirect("/")
-    // })
-    // .catch(err => {
-    //   res
-    //     .status(500)
-    //     .json({ error: err.message });
-    // });
+    const sql = `INSERT INTO favourites (user_id, trade_id) VALUES ($1, $2) RETURNING *;`
+    db.query(sql, [user_id, trade_id])
+    .then(data => {
+      res.redirect("/")
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    });
   });
 
 
