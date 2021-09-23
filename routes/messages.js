@@ -25,5 +25,8 @@ module.exports = (db) => {
     console.log("----->Messages@@@");
     res.render('messages.ejs');
   });
+  router.get("/:id", (req, res) => {
+    //res.send(req.params.id);
+  })
   return router;
 };

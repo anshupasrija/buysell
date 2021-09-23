@@ -67,26 +67,23 @@ module.exports = (db) => {
     console.log("req.body.img--->", req.body.img);
     console.log("req.body.year--->", req.body.year);
     console.log("req.body.price--->", req.body.price); 
-    console.log("req.body.status--->", req.body.status);
+    console.log("req.body.sold--->", req.body.sold);
     console.log("req.body.color--->", req.body.color);
     console.log("req.body.mileage--->", req.body.mileage);
     console.log("req.body.transmission--->", req.body.transmission);
     console.log("req.body.fuelType--->", req.body.fuelType);
+    console.log(req.body);
+    let query = `INSERT INTO trades (brand, model, image, year, price, sold, color, mileage, transmission, fuel) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)`;
 
-    let query = `INSERT INTO trades (brand, model, image, year, price, color, mileage, transmission, fuel) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)`;
-
-    db.query(query, [req.body.listOfCars, req.body.name, req.body.img, req.body.year, req.body.price, req.body.color, req.body.mileage, req.body.transmission, req.body.fuelType])
+    db.query(query, [req.body.listOfCars, req.body.name, req.body.img, req.body.year, req.body.price, req.body.sold === "on" ? true : false, req.body.color, req.body.mileage, req.body.transmission, req.body.fuelType])
     .then((err, res) => {
-        res.redirect('/');
+        console.log("Hello");
         })
         .catch(err => {
           res
             .status(500)
             .json({ error: err.message });
         });
-
-
-
 
     // res.render('admin.ejs');
     // console.log("reached admin route.");
