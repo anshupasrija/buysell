@@ -8,28 +8,14 @@
 const express = require('express');
 const router  = express.Router();
 
+const sendMessages = require("../lib/messageHelper");
+
 module.exports = (db) => {
-  router.get("/", (req, res) => {
-  //   let queryStr = `SELECT * FROM trades`;
-  //   console.log(queryStr);
-  //   db.query(queryStr)
-  //     .then(data => {
-  //       const trades = data.rows;
-  //       res.json({ trades });
-  //     })
-  //     .catch(err => {
-  //       res
-  //         .status(500)
-  //         .json({ error: err.message });
-  //     });
+  router.post("/", (req, res) => {
 
-    //  console.log("req-------------->>>>>>>>>>>>>>>>>>>", req.query);
+    sendMessages(req, res);
+    res.send('OK');
 
-
-    // req.session.user_id = id;
-//    const templateVars = { trade_id: req.query.trade_id, user_id: req.query.user_id };
-    const templateVars = { trade_id: req.query.trade_id, user_id: '2'};
-    res.render('messages.ejs', templateVars);
   });
   router.get("/:id", (req, res) => {
     //res.send(req.params.id);

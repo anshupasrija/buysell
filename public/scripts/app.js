@@ -1,5 +1,4 @@
 $(() => {
-
   console.log('loaded');
 
   const loadTrades = () => {
@@ -8,35 +7,62 @@ $(() => {
       .then((response) => {
         renderTrades(response);
       });
-
-    // $.ajax({
-    //   method: "GET",
-    //   url: "/api/trades"
-    // }).done((response) => {
-    //   // for(user of users) {
-    //   //   $("<div>").text(user.name).appendTo($("body"));
-    //   // }
-    //   console.log(response);
-    // });
   };
 
+  const eventInit = () => {
+    loadFavourites();
+    popupMessage();
+  };
+
+  const popupMessage = () => {
+    $(".popup-message").click(function () {
+      $("#trade_id").val($(this).siblings('input').val());
+      $("#modal-message").modal('show');
+   });
+  }
+
+  const loadFavourites= ()=>{
+    const $button = $('#favourite');
+    $button.click((event)=>{
+      event.preventDefault();
+      $.ajax({
+        url: `/favourites`,
+        method: "GET",
+        dataType: "json",
+        success: (data) => {
+          console.log("data", data);
+          renderTrades(data);
+        },
+        error: (err) => {
+          console.log(`errro: ${err}`);
+        },
+      });
+
+  });
+
+ }
+ const postFavourite =()=>{
+   const $button =$('text-muted');
+   event.preventDefault();
+   $.ajax({
+     url:`/favourites`
+   })
+ }
   const renderTrades = (trades) => {
     console.log("trades->",typeof trades);
     const $tradesContainer = $('#trade-container');
     $tradesContainer.empty();
-
     for (const trade of trades) {
       const $trade = createTradeElement(trade);
-      console.log(trade);
+      // console.log(trade);
       $tradesContainer.append($trade);
     }
+    eventInit();
   };
   const createTradeElement = (trade) => {
-    
     const soldStr = (trade.sold === false) ? '' : '<h3>Sold</h3>'
     const soldCss = (trade.sold === false) ? '' : 'item_sold_parent'
-    const messageStr = (trade.sold === false) ? '<button type="button" class="btn btn-sm btn-outline-secondary">Message</button>' : ''
-
+    const messageStr = (trade.sold === false) ? '<button type="button" id="btn-message" class="btn btn-sm btn-outline-secondary popup-message" >Message</button>' : ''
     const $tradeElement = $(`
       <div class="col-md-4">
         <div id="item_sold_parent" class="card mb-4 box-shadow ${soldCss}" >
@@ -52,22 +78,21 @@ $(() => {
             <p class="card-text">Transmission: ${trade.transmission}</p>
             <p class="card-text">Fuel Type: ${trade.fuel}</p>
             <div class="d-flex justify-content-between align-items-center">
-              <a href="/contact">
-                <div class="btn-group">
-                  <!-- <button type="button" class="btn btn-sm btn-outline-secondary">View</button> -->
-                  <input id='trade-id' name='trade-id' type="text" value=${trade.id} hidden/>
-                  ${messageStr}
-                </div>
-              </a>
-              <small class="text-muted">2 days ago</small>
+              <div class="btn-group">
+                <!-- <button type="button" class="btn btn-sm btn-outline-secondary">View</button> -->
+                <input id='trade-id' name='trade-id' type="text" value=${trade.id} hidden/>
+                ${messageStr}
+              </div>
+              <button type="submit" class="text-muted"><i class="far fa-heart"></i></button>
             </div>
           </div>
         </div>
       </div>
     `);
+
+
     return $tradeElement;
   };
-
 
   // grab the form
   const $form = $('#search-trade-form');
@@ -89,5 +114,30 @@ $(() => {
     });
   });
 
+  const $messageForm = $('#form-message');
+  $messageForm.on('submit', (event) => {
+    event.preventDefault();
+    const data = $messageForm.serialize();
+    $.ajax({
+      method: "POST",
+      url: "/messages",
+      data: data,
+      dataType:'text',
+      success: function (data) {
+          console.log("Sucess : sending email");
+          $("#modal-message").modal('hide');
+      },
+      complete: function () {
+        $messageForm.trigger("reset");
+        $("#modal-message").modal('hide');
+      },
+      error: function (data) {
+        console.log("Fail:",data);
+        $("#modal-message").modal('hide');
+      }
+    });
+  });
+
   loadTrades();
+
 });
