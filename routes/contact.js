@@ -3,10 +3,10 @@ const router  = express.Router();
 
 
 module.exports = () => {
-  router.get("/:id", (req, res) => {
+  router.get("/", (req, res) => {
     res.cookie('user_id', req.params.id);
-    res.redirect('/');
+    res.render('contact.ejs');
+    console.log("reached login route.");
   });
   return router;
 };
-

@@ -59,7 +59,6 @@ $(() => {
     }
     eventInit();
   };
-
   const createTradeElement = (trade) => {
     const soldStr = (trade.sold === false) ? '' : '<h3>Sold</h3>'
     const soldCss = (trade.sold === false) ? '' : 'item_sold_parent'
@@ -68,7 +67,7 @@ $(() => {
       <div class="col-md-4">
         <div id="item_sold_parent" class="card mb-4 box-shadow ${soldCss}" >
         ${soldStr}
-          <img class="card-img-top" data-src="" alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;" src="../images/audiseven.png" data-holder-rendered="true">
+          <img class="card-img-top" data-src="" alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;" src="../images/${trade.image}" data-holder-rendered="true">
           <div class="card-body">
             <p class="card-text">Brand: ${trade.brand}</p>
             <p class="card-text">Model: ${trade.model}</p>
