@@ -1,19 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-
 
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
   <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
   <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
 
   <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-  <!-- <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script> -->
-  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+  <!-- font awesome-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+  integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+  crossorigin="anonymous" referrerpolicy="no-referrer" />
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
     integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
@@ -26,8 +25,7 @@
   <header>
     <nav class="navbar navbar-expand-md navbar-dark bg-dark navbar-fixed-top">
       <a class="navbar-brand" href="/">Auto World</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
-        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
@@ -35,15 +33,14 @@
           <a class="nav-item nav-link" href="/">Vehicles</a>
         </div>
       </div>
-      <div class="navbar-nav">
-        <a class="nav-item nav-link" href="/login">Login</a>
-        <a class="nav-item nav-link" href="/register">Register</a>
+        <div class="navbar-nav">
+          <a class="nav-item nav-link" id ="favourite" >Favourites</button>
+          <a class="nav-item nav-link" href="/register">Register</a>
       </div>
     </nav>
   </header>
 
   <main>
-
     <section class="py-5 text-center container">
       <div class="row py-lg-5" style="background-image: url('../images/audiseven.png');">
         <!--inline style should move to scss-->
@@ -89,10 +86,9 @@
       <div class="row" id="trade-container">
       </div>
     </div>
-
   </main>
 
-  <!-- The Modal -->
+<!-- The Modal -->
   <div class="modal fade" id="modal-message">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -104,7 +100,6 @@
         </div>
         <!-- Modal body -->
         <div class="modal-body">
-
           <div class="row">
             <div class="col-md-12">
               <div class="input-group">
@@ -114,7 +109,7 @@
                 <input type="text" class="form-control" name="trade_id" id="trade_id"readonly>
               </div>
             </div>
-          </div>
+         </div>
           <div class="row">
             <div class="col-md-12">
               <div class="input-group">
@@ -162,7 +157,6 @@
       </div>
     </div>
   </div>
-
 
   <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
     <p class="col-md-4 mb-0 text-muted">© Lighthouse Lab, Ahshu / Erik / Sanghwan</p>

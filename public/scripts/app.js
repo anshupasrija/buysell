@@ -21,16 +21,12 @@ $(() => {
    });
   }
 
-  const loadFavourites = () => {
-    const $button = $('.text-muted');
+  const loadFavourites= ()=>{
+    const $button = $('#favourite');
     $button.click((event)=>{
       event.preventDefault();
-      const data = $button.serialize();
-      console.log("i am id",data);
-      console.log("cookies.user_id",cookies.user_id);
-
       $.ajax({
-        url: `/favourites/${data}`,
+        url: `/favourites`,
         method: "GET",
         dataType: "json",
         success: (data) => {
@@ -41,9 +37,17 @@ $(() => {
           console.log(`errro: ${err}`);
         },
       });
-    });
-  };
 
+  });
+
+ }
+ const postFavourite =()=>{
+   const $button =$('text-muted');
+   event.preventDefault();
+   $.ajax({
+     url:`/favourites`
+   })
+ }
   const renderTrades = (trades) => {
     console.log("trades->",typeof trades);
     const $tradesContainer = $('#trade-container');
@@ -86,6 +90,8 @@ $(() => {
         </div>
       </div>
     `);
+
+
     return $tradeElement;
   };
 
@@ -131,15 +137,6 @@ $(() => {
         $("#modal-message").modal('hide');
       }
     });
-    // .then(function(data) {
-
-    //   $(".error").hide(250);
-    //   $messageForm.trigger("reset");
-    //   $("#modal-message").modal('hide');
-    // })
-    // .catch(function(error) {
-    //   console.log(error);
-    // });
   });
 
   loadTrades();
