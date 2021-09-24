@@ -66,11 +66,11 @@ module.exports = (db) => {
 
   router.post("/", (req, res) => {
 
-    console.log("req.body.brand--->", req.body.listOfCars); 
-    console.log("req.body.model--->", req.body.name);   
+    console.log("req.body.brand--->", req.body.listOfCars);
+    console.log("req.body.model--->", req.body.name);
     console.log("req.body.img--->", req.body.img);
     console.log("req.body.year--->", req.body.year);
-    console.log("req.body.price--->", req.body.price); 
+    console.log("req.body.price--->", req.body.price);
     console.log("req.body.sold--->", req.body.sold);
     console.log("req.body.color--->", req.body.color);
     console.log("req.body.mileage--->", req.body.mileage);
@@ -91,6 +91,6 @@ module.exports = (db) => {
 
     // res.render('admin.ejs');
     // console.log("reached admin route.");
-  });  
+  });
   return router;
 };
