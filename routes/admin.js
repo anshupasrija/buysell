@@ -92,5 +92,38 @@ module.exports = (db) => {
     // res.render('admin.ejs');
     // console.log("reached admin route.");
   });  
+  router.post("/delete", (req, res) => {
+
+    console.log(req.body.id);
+    console.log("this is req body",req);
+    const trade_id = Object.keys(req.body)[0];
+    console.log("ItemID: ", trade_id);
+    const sql = `UPDATE trades SET active = false WHERE id = $1 RETURNING *;`
+    db.query(sql, [trade_id])
+    .then(data => {
+      res.json(data.rows);
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    });
+    /*
+    let query = `INSERT INTO trades (brand, model, image, year, price, sold, color, mileage, transmission, fuel) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)`;
+
+    db.query(query, [req.body.listOfCars, req.body.name, req.body.img, req.body.year, req.body.price, req.body.sold === "on" ? true : false, req.body.color, req.body.mileage, req.body.transmission, req.body.fuelType])
+    .then((err, res) => {
+        console.log("Hello");
+        })
+        .catch(err => {
+          res
+            .status(500)
+            .json({ error: err.message });
+        });
+    */
+    // res.render('admin.ejs');
+    // console.log("reached admin route.");
+  });  
   return router;
 };
+

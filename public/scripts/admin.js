@@ -11,7 +11,6 @@ $(() => {
 
   const eventInit = () => {
     loadFavourites();
-    popupMessage();
     $('.far.fa-heart').click((evt) => {
       console.log( "we are here");
       evt.preventDefault();
@@ -19,15 +18,6 @@ $(() => {
     )
 
   };
-
-  const popupMessage = () => {
-    $(".popup-message").click(function () {
-      $("#trade_id").val($(this).siblings('input').val());
-      $("#modal-message").modal('show');
-   });
-  }
-
-
 
   const loadFavourites= ()=>{
     const $button = $('#favourite');
@@ -42,7 +32,7 @@ $(() => {
           renderTrades(data);
         },
         error: (err) => {
-          console.log(`errro: ${err}`);
+          console.log(`error: ${err}`);
         },
       });
 
@@ -87,16 +77,23 @@ $(() => {
                 <!-- <button type="button" class="btn btn-sm btn-outline-secondary">View</button> -->
                 <input id='trade-id' name='trade-id' type="text" value=${trade.id} hidden/>
                 ${messageStr}
-              </div>
-              <button onClick="(function(){
-                $.ajax({
-                  url: '/favourites',
-                  method: 'POST',
-                  dataType: 'json',
-                  data: JSON.stringify(${trade.id})
-                });
-                return false;
-            })();return false;" class="text-muted"><i class="far fa-heart" id ='${'heart' +trade.id}'></i></button>
+                <button onClick="(function(){
+                  $.ajax({
+                    url: '/admin/delete',
+                    method: 'POST',
+                    dataType: 'json',
+                    data: JSON.stringify(${trade.id}),
+                    success: (data) => {
+                      console.log(“data”, data);
+                      renderTrades(data);
+                    },
+                    error: (err) => {
+                      console.log(err);
+                    },
+                  });
+                  return false;
+              })();return false;" type="button" id="btn-message" class="btn btn-sm btn-outline-danger popup-message" >Delete</button>
+              </div>              
             </div>
           </div>
         </div>
