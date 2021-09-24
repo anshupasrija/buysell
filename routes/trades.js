@@ -10,7 +10,7 @@ const router  = express.Router();
 
 module.exports = (db) => {
   router.get("/", (req, res) => {
-    let query = `SELECT * FROM trades order by id`; //Temporary qry, active, sold and sold_date check is needed
+    let query = `SELECT * FROM trades WHERE active = true ORDER BY id`; //Temporary qry, active, sold and sold_date check is needed
     console.log(query);
     db.query(query)
       .then(data => {
