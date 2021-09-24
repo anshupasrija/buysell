@@ -12,6 +12,7 @@ $(() => {
   const eventInit = () => {
     loadFavourites();
     popupMessage();
+    postFavourite();
   };
 
   const popupMessage = () => {
@@ -41,12 +42,21 @@ $(() => {
   });
 
  }
- const postFavourite =()=>{
-   const $button =$('text-muted');
-   event.preventDefault();
-   $.ajax({
-     url:`/favourites`
-   })
+ function postFavourite(){
+  //  const $button =$('.text-muted');
+   console.log("button",$button);
+  //  $button.click('submit', (event)=>{
+  //   //  console.log("this is event", event)
+  //    event.preventDefault();
+  //    const trade_id = 3
+    //  $.ajax({
+    //   url: '/favourites',
+    //   method: 'POST',
+    //   dataType: 'json',
+    //   data: JSON.stringify(trade_id)
+    // });
+    // })
+
  }
   const renderTrades = (trades) => {
     console.log("trades->",typeof trades);
@@ -57,7 +67,9 @@ $(() => {
       // console.log(trade);
       $tradesContainer.append($trade);
     }
+
     eventInit();
+
   };
   const createTradeElement = (trade) => {
     const soldStr = (trade.sold === false) ? '' : '<h3>Sold</h3>'
@@ -83,7 +95,15 @@ $(() => {
                 <input id='trade-id' name='trade-id' type="text" value=${trade.id} hidden/>
                 ${messageStr}
               </div>
-              <button type="submit" class="text-muted"><i class="far fa-heart"></i></button>
+              <button onClick="(function(){
+                $.ajax({
+                  url: '/favourites',
+                  method: 'POST',
+                  dataType: 'json',
+                  data: JSON.stringify(${trade.id})
+                });
+                return false;
+            })();return false;" class="text-muted"><i class="far fa-heart"></i></button>
             </div>
           </div>
         </div>
@@ -137,6 +157,20 @@ $(() => {
       }
     });
   });
+
+  $('.fa-heart').click((evt) => {
+
+    evt.preventDefault();
+    $(evt.target).removeClass("far fa-heart").addClass("fas fa-heart").css("color", "red");
+    $(evt.target).data('id', "fas-fa-heart");
+    $.post("/favourites", { item_Id: $(evt.target).data("item") })
+      .done((data) => {
+        console.log('done: ', data);
+      })
+    }
+  )
+
+
 
   loadTrades();
 

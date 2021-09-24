@@ -1,32 +1,72 @@
 <!DOCTYPE html>
 <html>
-  <head></head>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+    <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <!-- font awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+      integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <script type="text/javascript" src="/scripts/app.js"></script>
+
+    <title>Auto World</title>
+  </head>
   <body>
-    <h1>HELLO WORLD</h1>
+    <header>
+      <nav class="navbar navbar-expand-md navbar-dark bg-dark navbar-fixed-top">
+        <a class="navbar-brand" href="/">Auto World</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-item nav-link" href="/">Admin</a>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <h1 class="createPost">
+      CREATE A NEW POST
+    </h1>
     <form method="POST" action="/admin">
-      Brand:<input  id="listOfCars" name="listOfCars" class="listOfCars" textholder="listOfCars"/>
-      <br>
-      Model:<input textholder="model" name="name" class="model"/>
-      <br>
-      Upload Image:<input type="file" id="img" class="img" name="img"/>
-      <br>
-      Year:<input textholder="year" name="year" class="year"/>
-      <br>
-      Price:<input textholder="price" name="price" class="price"/>
-      <br>
-      SOLD:<input name="sold" id="sold" type="checkbox" class="sold" checked/>
-      <br>
-      Color:<input textholder="color" name="color" class="color"/>
-      <br>
-      Mileage:<input textholder="mileage" name="mileage" class="mileage"/>
-      <br>
-      Transmission:<input textholder="transmission" name="transmission" class="transmission"/>
-      <br>
-      Fuel Type:<input textholder="fuelType" name="fuelType" class="fuelType"/>
-      <br>
-      <a href="/admin">
-        <button class="post-item" name="post-item">POST</button>
-      </a>
+      <div class="thePostForm">
+        Brand: <input  id="listOfCars" name="listOfCars" class="listOfCars" textholder="listOfCars"/>
+        <br>
+        Model: <input textholder="model" name="name" class="model"/>
+        <br>
+        Upload Image: <input type="file" id="img" class="img" name="img"/>
+        <br>
+        Year: <input textholder="year" name="year" class="year"/>
+        <br>
+        Price: <input textholder="price" name="price" class="price"/>
+        <br>
+        SOLD: <input name="sold" id="sold" type="checkbox" class="sold" checked/>
+        <br>
+        Color: <input textholder="color" name="color" class="color"/>
+        <br>
+        Mileage: <input textholder="mileage" name="mileage" class="mileage"/>
+        <br>
+        Transmission: <input textholder="transmission" name="transmission" class="transmission"/>
+        <br>
+        Fuel Type: <input textholder="fuelType" name="fuelType" class="fuelType"/>
+        <br>
+        <a href="/admin">
+          <button class="post-item" name="post-item">POST</button>
+        </a>
+      </div>
     </form>
+    <div class="container">
+      <div class="row" id="trade-container">
+      </div>
+    </div>
   </body>
 </html>
