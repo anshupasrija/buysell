@@ -12,8 +12,11 @@ $(() => {
   const eventInit = () => {
     loadFavourites();
     popupMessage();
-    redheart();
-
+    $('.far.fa-heart').click((evt) => {
+      console.log( "we are here");
+      evt.preventDefault();
+      $(evt.target).toggleClass("heartred");      }
+    )
 
   };
 
@@ -24,14 +27,7 @@ $(() => {
    });
   }
 
-  const redheart=()=>{
-    $('.far.fa-heart').click((evt) => {
-      console.log( "we are here");
-      evt.preventDefault();
-      $(evt.target).toggleClass("heartred");      }
-    )
 
-  }
 
   const loadFavourites= ()=>{
     const $button = $('#favourite');
