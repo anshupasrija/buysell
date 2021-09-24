@@ -1,12 +1,9 @@
 const express = require('express');
-
 const router  = express.Router();
 
 
 
-
 module.exports = (db) => {
-
   router.get("/", (req, res) => {
     console.log('we are here');
     const sqlQuery = `SELECT * FROM favourites JOIN trades ON  trades.id =favourites.trade_id WHERE favourites.user_id =$1;`
@@ -28,7 +25,6 @@ module.exports = (db) => {
     const sql = `INSERT INTO favourites (user_id, trade_id) VALUES ($1, $2) RETURNING *;`
     db.query(sql, [user_id, trade_id])
     .then(data => {
-      console.log('<<<<<<<<<<<<<<<<<>>>>>>>>>>', data.rows)
       res.json(data.rows);
     })
     .catch(err => {
