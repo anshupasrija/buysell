@@ -77,11 +77,11 @@ module.exports = (db) => {
     console.log("req.body.transmission--->", req.body.transmission);
     console.log("req.body.fuelType--->", req.body.fuelType);
     console.log(req.body);
-    let query = `INSERT INTO trades (brand, model, image, year, price, sold, color, mileage, transmission, fuel) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)`;
+    let query = `INSERT INTO trades (brand, model, image, year, price, color, mileage, transmission, fuel) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)`;
 
-    db.query(query, [req.body.listOfCars, req.body.name, req.body.img, req.body.year, req.body.price, req.body.sold === "on" ? true : false, req.body.color, req.body.mileage, req.body.transmission, req.body.fuelType])
-    .then((err, res) => {
-        console.log("Hello");
+    db.query(query, [req.body.listOfCars, req.body.model, req.body.img, req.body.year, req.body.price, req.body.color, req.body.mileage, req.body.transmission, req.body.fuelType])
+    .then((err, ress) => {
+        res.redirect('/admin')
         })
         .catch(err => {
           res
