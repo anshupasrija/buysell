@@ -60,7 +60,6 @@ app.use("/messages", messagesRoute(db));
 // app.use("/api/messages", messagesRoute(db));
 // Note: mount other resources here, using the same pattern above
 
-
 // Home page
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).

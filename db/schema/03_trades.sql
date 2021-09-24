@@ -20,7 +20,7 @@ CREATE TABLE trades (
   transmission VARCHAR(20),
   fuel VARCHAR(20),
   mileage INTEGER,
-  thumbnail_photo_url VARCHAR(255),
+  --thumbnail_photo_url VARCHAR(255),
   image VARCHAR(255),
   price INTEGER,
   description TEXT,

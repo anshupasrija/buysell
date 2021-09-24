@@ -22,8 +22,12 @@ module.exports = (db) => {
     //       .status(500)
     //       .json({ error: err.message });
     //   });
-    res.render('admin.ejs');
-    console.log("reached admin route.");
+    console.log(req.cookies.user_id);
+    if(req.cookies.user_id === "1") {
+      res.render('admin.ejs');
+    }else{
+      res.redirect("/");
+    }
   });
 
 
