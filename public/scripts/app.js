@@ -12,7 +12,9 @@ $(() => {
   const eventInit = () => {
     loadFavourites();
     popupMessage();
-    postFavourite();
+    redheart();
+
+
   };
 
   const popupMessage = () => {
@@ -20,6 +22,15 @@ $(() => {
       $("#trade_id").val($(this).siblings('input').val());
       $("#modal-message").modal('show');
    });
+  }
+
+  const redheart=()=>{
+    $('.far.fa-heart').click((evt) => {
+      console.log( "we are here");
+      evt.preventDefault();
+      $(evt.target).toggleClass("heartred");      }
+    )
+
   }
 
   const loadFavourites= ()=>{
@@ -42,22 +53,8 @@ $(() => {
   });
 
  }
- function postFavourite(){
-  //  const $button =$('.text-muted');
-   console.log("button",$button);
-  //  $button.click('submit', (event)=>{
-  //   //  console.log("this is event", event)
-  //    event.preventDefault();
-  //    const trade_id = 3
-    //  $.ajax({
-    //   url: '/favourites',
-    //   method: 'POST',
-    //   dataType: 'json',
-    //   data: JSON.stringify(trade_id)
-    // });
-    // })
 
- }
+
   const renderTrades = (trades) => {
     console.log("trades->",typeof trades);
     const $tradesContainer = $('#trade-container');
@@ -103,7 +100,7 @@ $(() => {
                   data: JSON.stringify(${trade.id})
                 });
                 return false;
-            })();return false;" class="text-muted"><i class="far fa-heart"></i></button>
+            })();return false;" class="text-muted"><i class="far fa-heart" id ='${'heart' +trade.id}'></i></button>
             </div>
           </div>
         </div>
@@ -158,15 +155,24 @@ $(() => {
     });
   });
 
+
+
   $('.fa-heart').click((evt) => {
+    console.log( "we are here");
 
     evt.preventDefault();
-    $(evt.target).removeClass("far fa-heart").addClass("fas fa-heart").css("color", "red");
-    $(evt.target).data('id', "fas-fa-heart");
-    $.post("/favourites", { item_Id: $(evt.target).data("item") })
-      .done((data) => {
-        console.log('done: ', data);
-      })
+    // $(evt.target).removeClass("far fa-heart").addClass("fas fa-heart").css("color", "red");
+    // // $(evt.target).data('id', "fas-fa-heart");
+  //   $('#video-mirrors-handler').click(function() {
+  //     var myClass = $('ul.video-mirrors').attr('class');
+  //     alert('test');
+  //     alert(myClass);
+  // });
+
+
+      $('.fa-heart').toggleClass(".text-muted"); //you can list several class names
+      e.preventDefault();
+
     }
   )
 
