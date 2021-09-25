@@ -36,70 +36,12 @@
     </header>
 
 
-    <!-- <div class="thePostForm">
-      <div class="form-group row">
-        <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
-        <div class="col-sm-10">
-          <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
-        </div>
-      </div>
-      <div class="form-group row">
-        <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
-        <div class="col-sm-10">
-          <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
-        </div>
-      </div>
-      <fieldset class="form-group">
-        <div class="row">
-          <legend class="col-form-label col-sm-2 pt-0">Radios</legend>
-          <div class="col-sm-10">
-            <div class="form-check">
-              <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
-              <label class="form-check-label" for="gridRadios1">
-                First radio
-              </label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
-              <label class="form-check-label" for="gridRadios2">
-                Second radio
-              </label>
-            </div>
-            <div class="form-check disabled">
-              <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="option3" disabled>
-              <label class="form-check-label" for="gridRadios3">
-                Third disabled radio
-              </label>
-            </div>
-          </div>
-        </div>
-      </fieldset>
-      <div class="form-group row">
-        <div class="col-sm-2">Checkbox</div>
-        <div class="col-sm-10">
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="gridCheck1">
-            <label class="form-check-label" for="gridCheck1">
-              Example checkbox
-            </label>
-          </div>
-        </div>
-      </div>
-      <div class="form-group row">
-        <div class="col-sm-10">
-          <button type="submit" class="btn btn-primary">Sign in</button>
-        </div>
-      </div>
-    </div> -->
     <div class="form-row">
       <div class="form-panel">
 
           <div class="card bg-light mb-3" >
             <div class="card-header"><h2>Create a new post</h2></div>
             <div class="card-body">
-              <!-- <h5 class="card-title">Light Panel title</h5>
-              <p class="card-text">Some quick example text to build on the panel title and make up the bulk of the panel's content.</p> -->
-
 
               <form method="POST" action="/admin">
 
@@ -139,16 +81,9 @@
                       </div>
                     </div>
 
-
-
                   </div>
 
-
                   <div class="form-body-inside-right">
-
-
-
-
                     <div class="form-group row">
                       <label for="inputText3" class="col-sm-3 col-form-label">Mileage</label>
                       <div class="col-sm-7">
@@ -178,26 +113,14 @@
                       </div>
                     </div>
 
-
                     <div class="form-group row">
                       <div class="col-sm-10 " >
                         <button type="submit" class="btn btn-primary float-right">POST</button>
                       </div>
                     </div>
-
-
-
-
                   </div>
-
-
                 </div>
-
               </form>
-
-
-
-
             </div>
           </div>
 
@@ -209,123 +132,6 @@
           $(this).next('.custom-file-label').html(e.target.files[0].name);
       })
     </script>
-
-    <!-- <h2 class="createPost">
-      CREATE A NEW POST
-    </h2>
-    <form method="POST" action="/admin">
-      <div class="thePostForm">
-
-        <div class="form-group row">
-          <label for="inputText3" class="col-sm-2 col-form-label">Brand</label>
-          <div class="col-sm-5">
-            <input type="text" class="form-control" id="listOfCars" name="listOfCars" placeholder="">
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="inputText3" class="col-sm-2 col-form-label">model</label>
-          <div class="col-sm-5">
-            <input type="text" class="form-control" id="model" name="model" placeholder="">
-          </div>
-        </div>
-
-
-
-
-        <div class="form-group row">
-          <label for="inputText3" class="col-sm-2 col-form-label">Year</label>
-          <div class="col-sm-5">
-            <input type="text" class="form-control" id="year" name="year" placeholder="">
-          </div>
-        </div>
-
-        <div class="form-group row">
-          <label for="inputText3" class="col-sm-2 col-form-label">Price</label>
-          <div class="col-sm-5">
-            <input type="text" class="form-control" id="price" name="price" placeholder="">
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="inputText3" class="col-sm-2 col-form-label">Color</label>
-          <div class="col-sm-5">
-            <input type="text" class="form-control" id="color" name="color" placeholder="">
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="inputText3" class="col-sm-2 col-form-label">Mileage</label>
-          <div class="col-sm-5">
-            <input type="text" class="form-control" id="mileage" name="mileage" placeholder="">
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="inputText3" class="col-sm-2 col-form-label">Transmission</label>
-          <div class="col-sm-5">
-            <input type="text" class="form-control" id="transmission" name="transmission" placeholder="">
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="inputText3" class="col-sm-2 col-form-label">Fuel Type</label>
-          <div class="col-sm-5">
-            <input type="text" class="form-control" id="fuelType" name="fuelType" placeholder="">
-          </div>
-        </div>
-
-        <div class="input-group row">
-          <label for="inputText3" class="col-sm-2 col-form-label">Upload Image</label>
-          <div class="col-sm-5">
-            <div class="custom-file">
-              <input type="file" class="custom-file-input" id="img" name="img" aria-describedby="inputGroupFileAddon01">
-              <label class="custom-file-label" for="img">Choose file</label>
-            </div>
-          </div>
-        </div>
-        <script>
-          $('#img').on('change',function(e){
-              $(this).next('.custom-file-label').html(e.target.files[0].name);
-          })
-        </script>
-
-        <div class="form-group row">
-          <div class="col-sm-1 float-right">
-            <button type="submit" class="btn btn-primary">POST</button>
-          </div>
-        </div>
-
-      </div>
-    </form> -->
-
-
-    <!-- <h2 class="createPost">
-      CREATE A NEW POST
-    </h2>
-    <form method="POST" action="/admin">
-      <div class="thePostForm">
-        Brand: <input  id="listOfCars" name="listOfCars" class="listOfCars" textholder="listOfCars"/>
-        <br>
-        Model: <input textholder="model" name="name" class="model"/>
-        <br>
-        Upload Image: <input type="file" id="img" class="img" name="img"/>
-        <br>
-        Year: <input textholder="year" name="year" class="year"/>
-        <br>
-        Price: <input textholder="price" name="price" class="price"/>
-        <br>
-        SOLD: <input name="sold" id="sold" type="checkbox" class="sold" checked/>
-        <br>
-        Color: <input textholder="color" name="color" class="color"/>
-        <br>
-        Mileage: <input textholder="mileage" name="mileage" class="mileage"/>
-        <br>
-        Transmission: <input textholder="transmission" name="transmission" class="transmission"/>
-        <br>
-        Fuel Type: <input textholder="fuelType" name="fuelType" class="fuelType"/>
-        <br>
-        <a href="/admin">
-          <button class="post-item" name="post-item">POST</button>
-        </a>
-      </div>
-    </form>     -->
-
 
     <div class="container">
       <div class="row" id="trade-container">
