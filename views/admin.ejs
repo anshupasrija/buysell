@@ -91,9 +91,126 @@
         </div>
       </div>
     </div> -->
+    <div class="form-row">
+      <div class="form-panel">
+
+          <div class="card bg-light mb-3" >
+            <div class="card-header"><h2>Create a new post</h2></div>
+            <div class="card-body">
+              <!-- <h5 class="card-title">Light Panel title</h5>
+              <p class="card-text">Some quick example text to build on the panel title and make up the bulk of the panel's content.</p> -->
 
 
-    <h2 class="createPost">
+              <form method="POST" action="/admin">
+
+                <div class="form-body">
+
+                  <div class="form-body-inside-left">
+
+                    <div class="form-group row">
+                      <label for="listOfCars" class="col-sm-2 col-form-label">Brand</label>
+                      <div class="col-sm-7">
+                        <input type="text" class="form-control" id="listOfCars" name="listOfCars" placeholder="">
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label for="model" class="col-sm-2 col-form-label">model</label>
+                      <div class="col-sm-7">
+                        <input type="text" class="form-control" id="model" name="model" placeholder="">
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label for="inputText3" class="col-sm-2 col-form-label">Year</label>
+                      <div class="col-sm-7">
+                        <input type="text" class="form-control" id="year" name="year" placeholder="">
+                      </div>
+                    </div>
+
+                    <div class="form-group row">
+                      <label for="inputText3" class="col-sm-2 col-form-label">Price</label>
+                      <div class="col-sm-7">
+                        <input type="text" class="form-control" id="price" name="price" placeholder="">
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label for="inputText3" class="col-sm-2 col-form-label">Color</label>
+                      <div class="col-sm-7">
+                        <input type="text" class="form-control" id="color" name="color" placeholder="">
+                      </div>
+                    </div>
+
+
+
+                  </div>
+
+
+                  <div class="form-body-inside-right">
+
+
+
+
+                    <div class="form-group row">
+                      <label for="inputText3" class="col-sm-3 col-form-label">Mileage</label>
+                      <div class="col-sm-7">
+                        <input type="text" class="form-control" id="mileage" name="mileage" placeholder="">
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label for="inputText3" class="col-sm-3 col-form-label">Transmission</label>
+                      <div class="col-sm-7">
+                        <input type="text" class="form-control" id="transmission" name="transmission" placeholder="">
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label for="inputText3" class="col-sm-3 col-form-label">Fuel Type</label>
+                      <div class="col-sm-7">
+                        <input type="text" class="form-control" id="fuelType" name="fuelType" placeholder="">
+                      </div>
+                    </div>
+
+                    <div class="form-group row">
+                      <label for="inputText3" class="col-sm-3 col-form-label">Image</label>
+                      <div class="col-sm-7">
+                        <div class="custom-file">
+                          <input type="file" class="custom-file-input" id="img" name="img" aria-describedby="inputGroupFileAddon01">
+                          <label class="custom-file-label" for="img">Choose file</label>
+                        </div>
+                      </div>
+                    </div>
+
+
+                    <div class="form-group row">
+                      <div class="col-sm-10 " >
+                        <button type="submit" class="btn btn-primary float-right">POST</button>
+                      </div>
+                    </div>
+
+
+
+
+                  </div>
+
+
+                </div>
+
+              </form>
+
+
+
+
+            </div>
+          </div>
+
+      </div>
+    </div>
+
+    <script>
+      $('#img').on('change',function(e){
+          $(this).next('.custom-file-label').html(e.target.files[0].name);
+      })
+    </script>
+
+    <!-- <h2 class="createPost">
       CREATE A NEW POST
     </h2>
     <form method="POST" action="/admin">
@@ -113,20 +230,7 @@
         </div>
 
 
-        <!-- <div class="input-group row"> -->
-          <!-- <label for="inputText3" class="col-sm-2 col-form-label">Upload Image</label> -->
-          <!-- <div class="col-sm-5">
-            <input type="file" id="img" class="form-control" name="img"/>
-            <input type="file" class="custom-file-input" id="img" aria-describedby="inputGroupFileAddon01">
-          </div> -->
-          <!-- <div class="input-group-prepend">
-            <span class="input-group-text" id="inputGroupFileAddon01">Upload Image</span>
-          </div>
-          <div class="col-sm-5custom-file">
-            <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
-            <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-          </div>
-        </div> -->
+
 
         <div class="form-group row">
           <label for="inputText3" class="col-sm-2 col-form-label">Year</label>
@@ -182,13 +286,13 @@
         </script>
 
         <div class="form-group row">
-          <div class="col-sm-5 right float-right">
+          <div class="col-sm-1 float-right">
             <button type="submit" class="btn btn-primary">POST</button>
           </div>
         </div>
 
       </div>
-    </form>
+    </form> -->
 
 
     <!-- <h2 class="createPost">
