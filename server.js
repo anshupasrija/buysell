@@ -12,8 +12,6 @@ const fileUpload = require('express-fileupload');
 const morgan     = require('morgan');
 const app        = express();
 
-
-
 // PG database client/connection setup
 const { Pool } = require('pg');
 const dbParams = require('./lib/db.js');
@@ -64,7 +62,7 @@ app.use("/login", login());
 app.use("/api/widgets", widgetsRoutes(db));
 app.use("/api/trades", tradesRoutes(db));
 app.use("/admin", adminRoutes(db));
-app.use("/search", searchRoute(db));
+app.use("/api/search", searchRoute(db));
 app.use("/favourites", favouriteRoute(db));
 app.use("/messages", messagesRoute(db));
 // app.use("/api/messages", messagesRoute(db));

@@ -12,7 +12,7 @@ module.exports = (db) => {
   router.get("/", (req, res) => {
     const user_id = req.cookies.user_id;
     let param = [];
-    let query=`SELECT * FROM trades where active = true order by id desc`; //Temporary qry, active, sold and sold_date check is needed
+    let query=`SELECT * FROM trades where active = true ORDER BY insert_date DESC`; //Temporary qry, active, sold and sold_date check is needed
 
     // if(user_id) {
     //   query = 'SELECT trades.* FROM trades LEFT JOIN (select * from favourites where = $1) fav ON trades.id = fav.trade_id where active = true order by id desc';

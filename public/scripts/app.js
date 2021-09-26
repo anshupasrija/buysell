@@ -117,12 +117,12 @@ $(() => {
     console.log(data);
     $.ajax({
       method: "GET",
-      url: `/search?${data}`,
+      url: `/api/search?${data}`,
     })
     .then(function(data) {
       renderTrades(data);
       $(".error").hide(250);
-      $form.trigger("reset"); // reset the form like refreshing
+      // $form.trigger("reset"); // reset the form like refreshing
     })
     .catch(function(error) {
       console.log(error);
