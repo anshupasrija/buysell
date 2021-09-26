@@ -46,25 +46,26 @@ app.use(express.static("public"));
 
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
-const usersRoutes = require("./routes/users");
+// const usersRoutes = require("./routes/users");
 const login =require('./routes/login');
-const widgetsRoutes = require("./routes/widgets");
+// const widgetsRoutes = require("./routes/widgets");
 const adminRoutes = require("./routes/admin");
-const tradesRoutes = require("./routes/trades");
-const searchRoute = require("./routes/search");
+// const tradesRoutes = require("./routes/trades");
+// const searchRoute = require("./routes/search");
+const apiRoutes = require("./routes/api");
 const favouriteRoute = require("./routes/favourites");
-app.disable('etag');// removing the url from the cache memory
 const messagesRoute = require("./routes/messages");
+app.disable('etag');// removing the url from the cache memory
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
-app.use("/api/users", usersRoutes(db));
 app.use("/login", login());
-app.use("/api/widgets", widgetsRoutes(db));
-app.use("/api/trades", tradesRoutes(db));
 app.use("/admin", adminRoutes(db));
-app.use("/api/search", searchRoute(db));
 app.use("/favourites", favouriteRoute(db));
 app.use("/messages", messagesRoute(db));
+//app.use("/api/users", usersRoutes(db));
+//app.use("/api/widgets", widgetsRoutes(db));
+app.use("/api", apiRoutes(db));
+// app.use("/api/search", searchRoute(db));
 // app.use("/api/messages", messagesRoute(db));
 // Note: mount other resources here, using the same pattern above
 
