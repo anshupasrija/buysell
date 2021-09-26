@@ -8,9 +8,9 @@ const express    = require("express");
 const bodyParser = require("body-parser");
 const cookieParser = require('cookie-parser');
 const sass       = require("node-sass-middleware");
-const app        = express();
+const fileUpload = require('express-fileupload');
 const morgan     = require('morgan');
-
+const app        = express();
 
 
 
@@ -34,6 +34,16 @@ app.use("/styles", sass({
   debug: true,
   outputStyle: 'expanded'
 }));
+app.use(fileUpload({
+  createParentPath: true,
+  limits: { fileSize: 50 * 1024 * 1024 },
+  useTempFiles : true,
+  tempFileDir : '/tmp/',
+  uploadTimeout : 3000
+}));
+
+
+
 app.use(express.static("public"));
 
 // Separated Routes for each Resource

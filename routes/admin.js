@@ -19,9 +19,24 @@ module.exports = (db) => {
   });
 
   router.post("/", (req, res) => {
-    let query = `INSERT INTO trades (brand, model, image, year, price, color, mileage, transmission, fuel) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)`;
 
-    db.query(query, [req.body.listOfCars, req.body.model, req.body.img, req.body.year, req.body.price, req.body.color, req.body.mileage, req.body.transmission, req.body.fuelType])
+    let imgfileName = null;
+
+    if(req.files){
+
+      const uploadedFile = req.files.img;
+      imgfileName = uploadedFile.name;
+      uploadedFile.mv('./public/images/itemImages/' + uploadedFile.name, function(err) {
+        if (err) {
+          console.log(err);
+          return res.status(500).send(err);
+        }
+      });
+   }
+
+    const query = `INSERT INTO trades (brand, model, image, year, price, color, mileage, transmission, fuel) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)`;
+
+    db.query(query, [req.body.listOfCars, req.body.model, imgfileName, req.body.year, req.body.price, req.body.color, req.body.mileage, req.body.transmission, req.body.fuelType])
     .then((err, ress) => {
         res.redirect('/admin')
         })
@@ -34,10 +49,7 @@ module.exports = (db) => {
   });
   router.post("/delete", (req, res) => {
 
-    console.log(req.body.id);
-    console.log("this is req body",req);
     const trade_id = Object.keys(req.body)[0];
-    console.log("ItemID: ", trade_id);
     const sql = `UPDATE trades SET active = false WHERE id = $1 RETURNING *;`
     db.query(sql, [trade_id])
     .then(data => {
@@ -54,10 +66,7 @@ module.exports = (db) => {
 
   router.post("/sold", (req, res) => {
 
-    console.log(req.body.id);
-    console.log("this is req body",req);
     const trade_id = Object.keys(req.body)[0];
-    console.log("ItemID: ", trade_id);
     const sql = `UPDATE trades SET sold = NOT sold WHERE id = $1 RETURNING *;`
     db.query(sql, [trade_id])
     .then(data => {

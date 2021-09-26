@@ -39,11 +39,11 @@
     <div class="form-row">
       <div class="form-panel">
 
-          <div class="card bg-light mb-3" >
+          <div class="card bg-light mb-3">
             <div class="card-header"><h2>Create a new post</h2></div>
             <div class="card-body">
 
-              <form method="POST" action="/admin">
+              <form method="POST" action="/admin" enctype='multipart/form-data'>
 
                 <div class="form-body">
 
@@ -107,7 +107,7 @@
                       <label for="inputText3" class="col-sm-4 col-form-label">Image</label>
                       <div class="col-sm-7">
                         <div class="custom-file">
-                          <input type="file" class="custom-file-input" id="img" name="img" aria-describedby="inputGroupFileAddon01">
+                          <input type="file" class="custom-file-input" id="img" name="img" aria-describedby="inputGroupFileAddon01" accept="image/*">
                           <label class="custom-file-label" for="img">Choose file</label>
                         </div>
                       </div>

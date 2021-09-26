@@ -9,16 +9,8 @@ $(() => {
       });
   };
 
-
-  // const popupMessage = () => {
-  //   $(".popup-message").click(function () {
-  //     $("#trade_id").val($(this).siblings('input').val());
-  //     $("#modal-message").modal('show');
-  //  });
-  // }
-
   const eventInit = () => {
-    loadFavourites();
+    // loadFavourites();
     $('.far.fa-heart').click((evt) => {
       evt.preventDefault();
       $(evt.target).toggleClass("heartred");
@@ -62,26 +54,26 @@ $(() => {
     })
   };
 
-  const loadFavourites= ()=>{
-    const $button = $('#favourite');
-    $button.click((event)=>{
-      event.preventDefault();
-      $.ajax({
-        url: `/favourites`,
-        method: "GET",
-        dataType: "json",
-        success: (data) => {
-          console.log("data", data);
-          renderTrades(data);
-        },
-        error: (err) => {
-          console.log(`error: ${err}`);
-        },
-      });
+//   const loadFavourites= ()=>{
+//     const $button = $('#favourite');
+//     $button.click((event)=>{
+//       event.preventDefault();
+//       $.ajax({
+//         url: `/favourites`,
+//         method: "GET",
+//         dataType: "json",
+//         success: (data) => {
+//           console.log("data", data);
+//           renderTrades(data);
+//         },
+//         error: (err) => {
+//           console.log(`error: ${err}`);
+//         },
+//       });
 
-  });
+//   });
 
- }
+//  }
 
   const renderTrades = (trades) => {
     console.log("trades->",typeof trades);
@@ -101,11 +93,13 @@ $(() => {
     const soldStr = (trade.sold === false) ? '' : '<h3>Sold</h3>'
     const soldCss = (trade.sold === false) ? '' : 'item_sold_parent'
     const messageStr = (trade.sold === false) ? '<button type="button" id="btn-message" class="btn btn-sm btn-outline-warning btn-item-sold" >Sold</button>' : '<button type="button" id="btn-message" class="btn btn-sm btn-outline-warning btn-item-sold" >Relist</button>'
+    const carImage = (trade.image) ? trade.image : "default.png";
+
     const $tradeElement = $(`
       <div class="col-md-4">
         <div id="item_sold_parent" class="card mb-4 box-shadow ${soldCss}" >
         ${soldStr}
-          <img class="card-img-top" data-src="" alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;" src="../images/${trade.image}" data-holder-rendered="true">
+          <img class="card-img-top" data-src="" alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;" src="../images/itemImages/${carImage}" data-holder-rendered="true">
           <div class="card-body">
             <p class="card-text">Brand: ${trade.brand}</p>
             <p class="card-text">Model: ${trade.model}</p>
@@ -127,10 +121,6 @@ $(() => {
         </div>
       </div>
     `);
-
-
-
-
     return $tradeElement;
   };
 
