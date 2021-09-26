@@ -9,15 +9,7 @@ $(() => {
         renderTrades(response);
       });
 
-    // $.ajax({
-    //   method: "GET",
-    //   url: "/api/trades"
-    // }).done((response) => {
-    //   // for(user of users) {
-    //   //   $("<div>").text(user.name).appendTo($("body"));
-    //   // }
-    //   console.log(response);
-    // });
+
   };
 
   const renderTrades = (trades) => {
