@@ -63,7 +63,7 @@ $(() => {
     eventInit();
 
   };
-  
+
   const createTradeElement = (trade) => {
     const soldStr = (trade.sold === false) ? '' : '<h3>Sold</h3>'
     const soldCss = (trade.sold === false) ? '' : 'item_sold_parent'
@@ -150,29 +150,6 @@ $(() => {
       }
     });
   });
-
-
-
-  $('.fa-heart').click((evt) => {
-    console.log( "we are here");
-
-    evt.preventDefault();
-    // $(evt.target).removeClass("far fa-heart").addClass("fas fa-heart").css("color", "red");
-    // // $(evt.target).data('id', "fas-fa-heart");
-  //   $('#video-mirrors-handler').click(function() {
-  //     var myClass = $('ul.video-mirrors').attr('class');
-  //     alert('test');
-  //     alert(myClass);
-  // });
-
-
-      $('.fa-heart').toggleClass(".text-muted"); //you can list several class names
-      e.preventDefault();
-
-    }
-  )
-
-
 
   loadTrades();
 

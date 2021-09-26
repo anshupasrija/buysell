@@ -9,14 +9,57 @@ $(() => {
       });
   };
 
+
+  // const popupMessage = () => {
+  //   $(".popup-message").click(function () {
+  //     $("#trade_id").val($(this).siblings('input').val());
+  //     $("#modal-message").modal('show');
+  //  });
+  // }
+
   const eventInit = () => {
     loadFavourites();
     $('.far.fa-heart').click((evt) => {
-      console.log( "we are here");
       evt.preventDefault();
-      $(evt.target).toggleClass("heartred");      }
-    )
+      $(evt.target).toggleClass("heartred");
+    });
 
+    $('.btn-item-delete').click(function () {
+      // console.log($(this).siblings('input').val());
+      if(confirm('Delete item?')){
+        itemDelete($(this).siblings('input').val());
+      }
+   });
+
+   $('.btn-item-sold').click(function () {
+    // console.log($(this).siblings('input').val());
+      itemSold($(this).siblings('input').val());
+   });
+
+  };
+
+  const itemDelete = (trade_id) =>{
+    $.ajax({
+      url: '/admin/delete',
+      method: 'POST',
+      dataType: 'json',
+      data: trade_id,
+      success: () => {
+        loadTrades();
+      }
+    })
+  };
+
+  const itemSold = (trade_id) =>{
+    $.ajax({
+      url: '/admin/sold',
+      method: 'POST',
+      dataType: 'json',
+      data: trade_id,
+      success: () => {
+        loadTrades();
+      }
+    })
   };
 
   const loadFavourites= ()=>{
@@ -53,11 +96,11 @@ $(() => {
     eventInit();
 
   };
-  
+
   const createTradeElement = (trade) => {
     const soldStr = (trade.sold === false) ? '' : '<h3>Sold</h3>'
     const soldCss = (trade.sold === false) ? '' : 'item_sold_parent'
-    const messageStr = (trade.sold === false) ? '<button type="button" id="btn-message" class="btn btn-sm btn-outline-secondary popup-message" >Message</button>' : ''
+    const messageStr = (trade.sold === false) ? '<button type="button" id="btn-message" class="btn btn-sm btn-outline-warning btn-item-sold" >Sold</button>' : '<button type="button" id="btn-message" class="btn btn-sm btn-outline-warning btn-item-sold" >Relist</button>'
     const $tradeElement = $(`
       <div class="col-md-4">
         <div id="item_sold_parent" class="card mb-4 box-shadow ${soldCss}" >
@@ -77,6 +120,15 @@ $(() => {
                 <!-- <button type="button" class="btn btn-sm btn-outline-secondary">View</button> -->
                 <input id='trade-id' name='trade-id' type="text" value=${trade.id} hidden/>
                 ${messageStr}
+                <button type="button" id="btn-delete" class="btn btn-sm btn-outline-danger btn-item-delete" >Delete</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    `);
+
+/*
                 <button onClick="(function(){
                   $.ajax({
                     url: '/admin/delete',
@@ -84,21 +136,12 @@ $(() => {
                     dataType: 'json',
                     data: JSON.stringify(${trade.id}),
                     success: (data) => {
-                      console.log(“data”, data);
-                      renderTrades(data);
-                    },
-                    error: (err) => {
-                      console.log(err);
-                    },
+                    }
                   });
                   return false;
               })();return false;" type="button" id="btn-message" class="btn btn-sm btn-outline-danger popup-message" >Delete</button>
-              </div>              
-            </div>
-          </div>
-        </div>
-      </div>
-    `);
+
+              */
 
 
     return $tradeElement;
@@ -147,29 +190,6 @@ $(() => {
       }
     });
   });
-
-
-
-  $('.fa-heart').click((evt) => {
-    console.log( "we are here");
-
-    evt.preventDefault();
-    // $(evt.target).removeClass("far fa-heart").addClass("fas fa-heart").css("color", "red");
-    // // $(evt.target).data('id', "fas-fa-heart");
-  //   $('#video-mirrors-handler').click(function() {
-  //     var myClass = $('ul.video-mirrors').attr('class');
-  //     alert('test');
-  //     alert(myClass);
-  // });
-
-
-      $('.fa-heart').toggleClass(".text-muted"); //you can list several class names
-      e.preventDefault();
-
-    }
-  )
-
-
 
   loadTrades();
 
