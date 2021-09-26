@@ -468,15 +468,7 @@ footer {
   line-height: 0.5rem;
 }
 
-// .itemBox .Closed {
 
-//     font-size: 14px;
-//     line-height: 22px;
-//     color: white;
-//     background: Red;
-//     text-align: center;
-//     font-weight: bold;
-// }
 .modal-body .row {
   padding: 0.2em;
 }
@@ -489,55 +481,47 @@ footer {
 }
 
 .thePostForm {
+  display: flex;
+  flex-direction: column;
+
   margin: auto;
   border: 0.3px solid black;
-  padding-left: 10em;
   padding-top: 10px;
-  padding-bottom: 10px;
-  margin-bottom: 40px;
-  width: 90%;
+  // padding-bottom: 10px;
+  margin-bottom: 10px;
+  width: 60%;
 //  background-color: rgb(180, 228, 230);
   background-color:lighten(#000, 93.5%);
 }
 
-.listOfCars {
-  margin-bottom: 15px;
-}
 
-.model {
-  margin-bottom: 15px;
+.form-row {
+  display: flex;
+  align-content: space-around;
+  justify-content: center;
 }
-
-.img {
-  margin-bottom: 15px;
+.form-panel {
+  margin-top: 2em;
+  margin-bottom: 1em;
+  align-content: space-around;
+  justify-content: center;
+  width:70%;
 }
-
-.year {
-  margin-bottom: 15px;
+.form-body {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  // align-content: space-around;
+  justify-content: center;
 }
-
-.price {
-  margin-bottom: 15px;
+.form-body-inside-left {
+  width: 50%;
 }
-
-.sold {
-  margin-bottom: 15px;
+.form-body-inside-right {
+  width: 50%;
 }
-
-.color {
-  margin-bottom: 15px;
-}
-
-.mileage {
-  margin-bottom: 15px;
-}
-
-.transmission {
-  margin-bottom: 15px;
-}
-
-.fuelType {
-  margin-bottom: 15px;
+.form-button {
+  width: 50%;
 }
 
 .post-item {
