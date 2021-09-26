@@ -128,20 +128,7 @@ $(() => {
       </div>
     `);
 
-/*
-                <button onClick="(function(){
-                  $.ajax({
-                    url: '/admin/delete',
-                    method: 'POST',
-                    dataType: 'json',
-                    data: JSON.stringify(${trade.id}),
-                    success: (data) => {
-                    }
-                  });
-                  return false;
-              })();return false;" type="button" id="btn-message" class="btn btn-sm btn-outline-danger popup-message" >Delete</button>
 
-              */
 
 
     return $tradeElement;
