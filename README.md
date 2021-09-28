@@ -16,8 +16,8 @@ Auto World is a buy-and-sell app built with Node.js, Express and PostgreSQL wher
 3. Reset database: `npm run db:reset`
 4. Run the server: `npm run local`
 5. Set .env file
-6. Install required packages [nodemailer, express-fileupload, twilio]
-7. Visit `http://localhost:8080/`
+6. Install required packages [cookie-session, nodemailer, express-fileupload, twilio, express-fileupload]
+7. Visit `http://localhost:8080/` (Admin: `http://localhost:8080/login/1`, User: `http://localhost:8080/login/{2,3,4...}`)
 
 ## Dependencies
 
@@ -35,6 +35,3 @@ Auto World is a buy-and-sell app built with Node.js, Express and PostgreSQL wher
 * Nodemailer
 * twilio
 * express-fileupload
-
-
-

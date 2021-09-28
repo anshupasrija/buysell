@@ -30,13 +30,19 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-          <a class="nav-item nav-link" href="/">Vehicles</a>
+          <% if (isAdmin) { %>
+          <a class="nav-item nav-link" href="/admin">Admin </a>
+          <% } else { %>
+          <a class="nav-item nav-link" href="/">Vehicles </a>
+          <% } %>
         </div>
       </div>
-        <div class="navbar-nav">
-          <a class="nav-item nav-link" id ="favourite" >Favourites</button>
-          <a class="nav-item nav-link" href="/register">Register</a>
+      <%// if (!isAdmin) { %>
+      <div class="navbar-nav">
+        <a class="nav-item nav-link" id ="favourite" >Favourites</a>
+        <!--<a class="nav-item nav-link" href="/register">Register</a>-->
       </div>
+      <%// } %>
     </nav>
   </header>
 

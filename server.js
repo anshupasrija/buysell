@@ -46,12 +46,8 @@ app.use(express.static("public"));
 
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
-// const usersRoutes = require("./routes/users");
 const login =require('./routes/login');
-// const widgetsRoutes = require("./routes/widgets");
 const adminRoutes = require("./routes/admin");
-// const tradesRoutes = require("./routes/trades");
-// const searchRoute = require("./routes/search");
 const apiRoutes = require("./routes/api");
 const favouriteRoute = require("./routes/favourites");
 const messagesRoute = require("./routes/messages");
@@ -62,19 +58,19 @@ app.use("/login", login());
 app.use("/admin", adminRoutes(db));
 app.use("/favourites", favouriteRoute(db));
 app.use("/messages", messagesRoute(db));
-//app.use("/api/users", usersRoutes(db));
-//app.use("/api/widgets", widgetsRoutes(db));
 app.use("/api", apiRoutes(db));
-// app.use("/api/search", searchRoute(db));
-// app.use("/api/messages", messagesRoute(db));
 // Note: mount other resources here, using the same pattern above
 
 // Home page
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
-
 app.get("/", (req, res) => {
-  res.render("index");
+  const user_id = req.cookies.user_id;
+  let isAdmin = false;
+  if(user_id && user_id === '1'){
+    isAdmin = true;
+  }
+  res.render("index",{'isAdmin':isAdmin});
 });
 
 app.listen(PORT, () => {

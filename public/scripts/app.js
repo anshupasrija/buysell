@@ -12,13 +12,20 @@ $(() => {
   const eventInit = () => {
     loadFavourites();
     popupMessage();
-    $('.far.fa-heart').click((evt) => {
-      console.log( "we are here");
-      evt.preventDefault();
-      $(evt.target).toggleClass("heartred");      }
-    )
 
-  };
+    $('.far.fa-heart').click((evt) => {
+      evt.preventDefault();
+      $(evt.target).toggleClass("heartred");
+      // $(evt.target).parents('.favBtn').click();
+
+    });
+
+    $('.favBtn').click((evt) => {
+      $(evt.target).children('i').toggleClass("heartred");
+      // console.log($(evt.target).siblings('.btn-group').find('#trade-id').val());
+      // $(this).siblings('.btn-group').children('.trade_id')
+    });
+   };
 
   const popupMessage = () => {
     $(".popup-message").click(function () {
@@ -38,8 +45,8 @@ $(() => {
         method: "GET",
         dataType: "json",
         success: (data) => {
-          console.log("data", data);
-          renderTrades(data);
+          // console.log("data", data);
+          renderTrades(data, true);
         },
         error: (err) => {
           console.log(`errro: ${err}`);
@@ -50,12 +57,12 @@ $(() => {
 
  }
 
-  const renderTrades = (trades) => {
+  const renderTrades = (trades, isFav=false) => {
     console.log("trades->",typeof trades);
     const $tradesContainer = $('#trade-container');
     $tradesContainer.empty();
     for (const trade of trades) {
-      const $trade = createTradeElement(trade);
+      const $trade = createTradeElement(trade, isFav);
       // console.log(trade);
       $tradesContainer.append($trade);
     }
@@ -64,11 +71,28 @@ $(() => {
 
   };
 
-  const createTradeElement = (trade) => {
+  const createTradeElement = (trade, isFav) => {
     const soldStr = (trade.sold === false) ? '' : '<h3>Sold</h3>'
     const soldCss = (trade.sold === false) ? '' : 'item_sold_parent'
     const messageStr = (trade.sold === false) ? '<button type="button" id="btn-message" class="btn btn-sm btn-outline-secondary popup-message" >Message</button>' : ''
     const carImage = (trade.image) ? trade.image : "default.png";
+    const heartred = (trade.heartred) ? 'heartred' : '';
+    let favouriteBtn = '';
+    if (!isFav && trade.sold === false && document.cookie) {
+      favouriteBtn = `
+        <button class='favBtn' onClick="(function(){
+            $.ajax({
+              url: '/favourites',
+              method: 'POST',
+              dataType: 'json',
+              data: JSON.stringify(${trade.id}),
+              success: $('.heart${trade.id}').toggleClass('heartred')
+            });
+            return false;
+        })();return false;" ><i class="far fa-heart ${heartred}" id ='heart${trade.id}'></i></button>
+      `;
+    }
+    //
 
     const $tradeElement = $(`
       <div class="col-md-4">
@@ -90,15 +114,7 @@ $(() => {
                 <input id='trade-id' name='trade-id' type="text" value=${trade.id} hidden/>
                 ${messageStr}
               </div>
-              <button onClick="(function(){
-                $.ajax({
-                  url: '/favourites',
-                  method: 'POST',
-                  dataType: 'json',
-                  data: JSON.stringify(${trade.id})
-                });
-                return false;
-            })();return false;" class="text-muted"><i class="far fa-heart" id ='${'heart' +trade.id}'></i></button>
+                ${favouriteBtn}
             </div>
           </div>
         </div>
